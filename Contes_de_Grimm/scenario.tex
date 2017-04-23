@@ -1,0 +1,890 @@
+% Créé par Giooss, en utilisant le template Latex de Martin Bodin
+% Document sous licence CC BY-NC-SA (TODO: voir si je suis sensé le garder légalement si j'utilise le template de Martin...)
+
+\input{en-tetes.tex}
+
+
+% --- Réglages pour générer les feuilles de persos.
+\newcommand{\forplayer}{n} % n => pour le mj / y => tient compte de la commande suivante
+\newcommand{\theplayer}{1} % Numéro du joueur dont la fiche est généré
+\newcommand{\manyColored}{n}
+
+% --- Liste des personnages
+\defineNewPlayer{1}{Red}			% Wilhelm Grimm
+\defineNewPlayer{2}{Blue}			% Hansel
+\defineNewPlayer{3}{OliveGreen}		% Le chasseur
+\defineNewPlayer{4}{Cyan}			% Prof
+\defineNewPlayer{5}{Brown}			% Gretel
+\defineNewPlayer{6}{Yellow}			% Garulfo
+\defineNewPlayer{7}{Plum}			% Le "chapelier fou"
+\defineNewPlayer{8}{Gray}			% Le chat botté
+\defineNewPlayer{9}{DarkSkyBlue}	% Petit-poucet
+\defineNewPlayer{10}{BlueViolet}	% Le père Noël
+\defineNewPlayer{11}{Rhodamine}		% Zelda
+\defineNewPlayer{12}{Violet}		% Belle
+
+
+
+\newcommand{\pageForPlayer}[4]{%
+\player{#1}{
+	%\mj{\newpage}%
+	\section{Il était une fois... ton personnage~: #2}
+	\begin{description}
+		#3
+	\end{description}
+\par
+	\paragraph{Description du personnage.}
+	{#4}
+}}
+
+% -----------------------------------------------------------------------------
+
+\title{La confrérie des rêves - V2}
+\author{Guillaume Iooss}
+\date{31 Décembre 2016}
+
+\begin{document}
+
+\mj{\maketitle}
+
+% *** Remarques sur les commandes latex de Martin:
+% - "\mj{ ... }"														=> permet qu'un texte ne soit vu que par le MJ.
+% - "\players[n1][n2] ... [nk] { ... }"									=> permet qu'un texte ne soit vu que par les joueurs n1, ... , nk
+% - Tout ça s'imbrique comme on veut (et tout est visible par le MJ dans tous les cas)
+% - "\pageForPlayer{n}{Nom_joueur}{description_en_item}{ ... }			=> Génère une page de description du joueur numéro "n", ayant pour nom "Nom_joueur", etc etc
+
+
+% ********************************************************
+% *** Description de l'univers - version complète (MJ) ***
+% ********************************************************
+\mj{ \section{Résumé complet de la murder pour MJ}
+	
+	\subsection{Contexte historique de la murder}
+	
+	\paragraph{Il était une fois... Perrault} Il y a environ 50 ans avant les événements de la murder, un homme (nommé \emph{Charles Perrault}) découvrit un artefact (nommé la \emph{Porte des rêves}), un médaillon ayant la capacité de créer un portail vers un autre monde. Les limitations de cet artefact sont:
+	\begin{itemize}
+		\item Une "limitation de portée": deux mondes connectés ne doivent pas trop différer.
+		\item Le temps de recharge de l'artefact (d'environ 6 mois)
+		\item La capacité d'imagination de l'utilisateur
+		\item (Secret) Une sur-utilisation du médaillon a des chances de faire apparaître des passages de manière totalement aléatoire.
+	\end{itemize}
+	
+	\par Perrault se servit de cet artefact de nombreuses reprises pour voyager tranquillement à travers les mondes, et raconta une partie de ses voyages sous forme de contes. Il récupéra deux enfants (les frères \emph{Grimm} (\emph{Jacob} et \emph{Wilhelm}) d'un conte qui l'accompagnèrent dans ses explorations. Cependant, après plusieurs années d'explorations, les habitants des contes les plus visités par Perrault commençaient à remarquer la présence des passages marquant la trace de ces voyages. Après de nombreuses affaires de créatures (voire de personnages) ayant traversé par inadvertance ces passages cachés, de fortes suspicions furent dirigé vers Perrault et sa bande (seul personnage commun aux contes connectés). Trois des contes les plus affectés s'allièrent pour faire pression sur Perrault et l'inciter à cesser ses agissements. Or, suite à un complot interne entre des figures importantes venant des 3 contes, une embuscade fut dressée, tuant par surprise Perrault et Jacob Grimm. Le frère survivant (Wilhelm) parvint à semer ses assaillants, mais la porte tomba dans les mains des conspirateurs.
+	
+	\par Wilhelm a réussi à s'en sortir parce qu'il était tombé sur un des passages aléatoire créé par le médaillon et s'est retrouvé à moitié mort, dans la caverne aux merveilles du monde d'Aladin. Il trouva la lampe magique et le génie lui accorda trois vœux. Son premier vœu fait en urgence fut d'être soigné de ses blessures. Après une séances de question, Wilhelm se rendit compte que le pouvoir du génie étant limité à son propre conte. Ainsi, il lui était impossible de rendre à Wilhelm le médaillon, tout comme il lui était impossible de ressusciter son mentor et son frère, ou le renvoyer dans son conte natal. Se rendant compte qu'il était bloqué dans ce multivers avec une conspiration à ses trousses, Wilhelm souhaita successivement un déguisement et des connaissances du multivers des contes. Le premier changea drastiquement son apparence\footnote{Ce qui permet que le narrateur soit joué par un personnage féminin, et donc faire des blagues débiles du même style que la mort de Pratchett}, le second lui permettant de sentir des passages et donc naviguer à travers les contes, et les deux lui donnant les bases pour s'établir une nouvelle identité: "le Narrateur".
+	
+	
+	\paragraph{La confrérie des rêves} Pendant ce temps, les assaillants (\emph{Hansel}, \emph{Le chasseur} (petit chaperon rouge) et \emph{Prof} (Blanche Neige), découvrant la puissance de la porte et politiquement fort dans leurs contes correspondants, décidèrent de créer une organisation multi-contes: la \emph{confrérie des rêves}. La confrérie a pour objectifs officiels de:
+	\begin{itemize}
+		\item Découvrir les passages entre les contes et contrôler leur utilisation (notamment pour limiter les influences entre contes)
+		\item Faire du commerce entre contes (avoir un monopole sur les voix de communication aidant beaucoup)
+		\item Proposer un service de mercenariat pour lutter contre les menaces des contes (ex: le Grand Méchant Loup), afin d'éviter que ces derniers gagnent, faisant "basculer un conte".
+	\end{itemize}
+	
+	\par Officieusement, les trois membres fondateurs continuèrent d'utiliser secrètement la porte des rêves pour leur profit personnel, notamment en avantageant un aspect (très souvent commercial, que ce soit pour instaurer une nouvelle route entre deux ombres, pour découvrir une ombre abondant de la ressource désirée, pour écraser toute tentative de société concurrente, \dots) lors de la création du passage. De nombreux passages créés par Perrault furent retrouvé, mais certains n'ont toujours pas été découvert. De plus, l'utilisation intensive de la porte pour créer des passages a fini par en créer d'autres spontanément. La confrérie attribua ces derniers à des passages anciens de Perrault et ne s'en soucia pas plus que ça. Seul le dernier frère Grimm survivant fit le calcul, et se rendit compte rapidement que quelque chose n'allait pas, et que les frontières entre les contes s'affaiblissaient de plus en plus à chaque nouveau passage créé...
+		
+	\par Partant des 3 contes originels (\emph{Hansel et Gretel}, \emph{Le chaperon rouge} et \emph{Blanche-neige et les 7 nains}) et fort de leur monopole et de leur puissance la confrérie s'étendit. La très grande majorité des contes déjà connectés rejoignirent rapidement la confrérie et certains contes, alors non connectés, le devinrent (comme le \emph{Pays des merveilles} (Alice) ou le \emph{royaume de la grenouille et du dragon} (Garulfo) qui, du fait de leur univers non-Grimmesque, sont des membres plus récents).
+	
+	
+	\paragraph{La rébellion des "grands méchants loups"} En conséquence aux très nombreuses actions agressives de la confrérie, des voix commencèrent à s'élever face à la confrérie, mais furent -bien entendu- rapidement réprimées assez violemment (le chasseur ne faisant pas dans la subtilité et faisant une fixation sur l'élimination des menaces de contes, suite à ce qui est arrivé à sa nièce et sa tante). Cependant, le jugement de la confrérie concernant certaines menaces de contes ne faisait pas toujours l'unanimité. Ainsi, une résistance secrète, menée par le \emph{Chat Botté}, se forma. Ils commencèrent à lutter contre l'influence (jugée néfaste) de la confrérie par derrière la scène, notamment en proposant des services de contre-bandages, préservant les contes dans leur intégrité, utilisant des passages non découverts pas la confrérie / sabotant les convois et installations de la confrérie, etc etc... Le nom de \emph{rébellion des "grands méchants loups"} vient du chasseur qui, énervé suite à une nième traque infructueuse, les accusa de juste "aider les méchants des contes", point très largement repris par le service de propagande de la confrérie.
+	
+	\par En résumé, les objectifs de la rébellion sont:
+	\begin{itemize}
+		\item Lutter contre l'influence de la confrérie sur tous les plans: politique, économique, militaire (quitte à effectivement recruter des fois des "méchants", énervés que la confrérie ne les laisse à peine vivre dans leur propre conte), etc etc
+		\item A terme détruire la confrérie sous sa forme actuelle (pour adopter, par exemple, une gestion décentralisée)
+	\end{itemize}
+	
+	
+	\paragraph{L'incident de Cendrillon} La rébellion avait initialement une assez mauvaise réputation vis à vis du public, du fait de la propagande de la confrérie, mais gagne en popularité à chaque fois que l'oppression de la confrérie se fait sentir dans un conte. Notamment, cette réputation s'est nettement renforcée il y a 10 ans environ lors d'un incident provoquée suite à une ingérence de la confrérie dans le conte de Cendrillon. En résumé, peu après la découverte du passage et les premières missions d'observation de la confrérie, les éclaireurs ont surpris une magie potironesque (de la marraine fée). Après avoir analysé rapidement la situation, ils en ont conclus à de la sorcellerie et ont "sécurisé la zone", empêchant Cendrillon d'assister au bal. Le prince n'eut donc pas d'occasion de la rencontrer et se maria donc avec une des trois sœurs, donnant une reine tyrannique au royaume et faisant basculer le conte.
+
+	\par Ne pouvant reconnaître officiellement leur erreur sans pouvoir perdre énormément en crédit, et ayant déjà réussi à obtenir des relations commerciales avec le pouvoir en place, la confrérie continua de traiter normalement (sans tenir compte des protestations du peuple du conte). Or, la mauvaise reine décida un jour de trahir la confrérie en essayant d'envahir les contes connexes au sien. S'en suivit une guerre de 7 mois qui se conclut par la victoire militaire de la confrérie (et seulement grâce à la découverte "heureuse" d'un passage prenant à revers leurs troupes), l'exécution de la famille royale et la mise en tutelle du monde de Cendrillon.
+	
+	
+	\paragraph{De nos jours} La situation géo-politique est la suivante:
+	\begin{itemize}
+		\item \textbf{Wilhelm Grimm} est maintenant reconnu comme une personnalité multiconte. Après de nombreuses années d'études, il peut maintenant localiser les passages, ce qui lui permet de voyager à sa guise entre les contes. Il s'est rendu compte de l'existence de passages supplémentaires que ni Perrault, ni la confrérie en sont responsable, et commence à en déduire que les frontières entre contes du multivers sont sur le point de craquer. Plusieurs situations peuvent arriver par la suite: soit le multivers se fait détruire, soit les contes commencent à fusionner en un unique monde, laissant les royaumes les plus faibles à la merci d'invasions d'autres royaumes.
+		
+		En étudiant la structure des contes, il s'est rendu conte que chaque contes possédaient une sorte de "pattern" correspondant à leur histoire, qui se répète régulièrement sans que les habitants ne le remarquent. Par exemple, le monde du petit chaperon rouge a un nombre assez conséquent de disparition de jeune fille et grand mère habitant à l'orée de la forêt. Comme autre exemple, le conte de Cendrillon semble se reproduire à chaque génération, juste avec des personnes différentes. Encore un autre exemple est le fait que les Hansel et Gretel de la confrérie sont apparemment des amis d'enfance (maintenant marrié), mais dans d'autres itérations, ils étaient frères et sœurs. En poussant ses recherches dans cette direction, le narrateur a maintenant le pouvoir de sentir l'essence des gens (càd le rôle qu'ils occupent dans le conte) et peut prédire des actions, ce qui lui a permit d'acquérir une réputation d'oracle par certaines occasions.
+		
+		Les membres fondateurs de la confrérie sont toujours à la recherche de Wilhelm Grimm (ou au moins son corps), mais n'ont pas fait le lien avec le narrateur, du fait du changement d'apparence. De son côté, Wilhelm Grimm n'a aucune idée du fait que le médaillon a été séparé en 3 parties\dots
+		
+		\item \textbf{Les membres fondateurs de la confrérie} (\textbf{Hansel}, \textbf{Le Chasseur} et \textbf{Prof}) sont toujours à la tête de la confrérie. Hansel s'occupe plutôt des affaires politiques (et de l'intrigue), Le chasseur des milices et mercenaires et Prof du commerce. Afin d'éviter que l'un prenne le dessus sur l'autre, la porte des rêves (médaillon) a été divisée en 3 parties (chaque parties étant en possession de chaque membres).
+		\item La confrérie englobe la majeure partie des contes de Perrault et de Grimm. Cependant, le conseil ne s'arrêtant pas là, les mondes connectés sont de plus en plus étranges comparés au monde de départ (webcomics, manga, bande dessinés). Le dernier en date fut Hyrule (Zelda). Le passage a été créé afin d'avoir un partenaire commercial au niveau de ressources manquantes à la confrérie (bois, pierre, nourriture), du fait notamment d'interférences faites par la rébellion.
+		
+		\item Du fait que des contes de plus en plus bizarres se retrouvent connecté, un sentiment de xénophobie s'est emparé d'une partie de la population. Notamment, \textbf{Gretel}, la femme de Hansel, est très xénophobe et magouille ces derniers temps pour éviter que ces mondes "dégénérés" se retrouvent intégré facilement dans la confrérie. Notamment, elle s'est très fréquemment disputée avec Hansel à ce sujet. De plus, elle commence à avoir quelques suspicions sur le fait que les nouveaux passages soient découverts, ne serait-ce parce qu'ils semblent avantager particulièrement la confrérie systématiquement. Du coup, elle commence à se demander si Hansel n'aurait pas sa main dedans, même si elle ignore de quelle façon...
+		
+		\item La \textbf{rébellion des grands méchant loups} (toujours menée par le \textbf{Chat botté}) a réussi à bien s'infiltrer dans la confrérie. Le chat botté lui-même a été recruté comme conseillé de la confrérie (du fait de sa perspicacité), ce qui lui fournit une source d'information inestimable et une légère influence sur les décisions de la confrérie. Certains contes ont également affiché leur soutien officieux à la rébellion (notamment, le \textbf{Petit-Poucet}, \textbf{Barbe Bleue} qui est un des rares contes qui commerce avec la confrérie mais refuse toute influence politique, etc etc).
+		
+		\item Une ONG nommée la \textbf{"Société Protectrice des Antagonistes"} (SPA) a été récemment créée, pour tenter de lutter pour le droit des méchants à pouvoir exercer leur liberté dans le conte, sans qu'ils se retrouvent traqué par outrance par la confrérie (alors qu'ils n'avaient (pour l'instant?) rien fait). Cette ONG est actuellement dirigée par \textbf{Belle} (La Belle et la Bête) qui a, bien entendu, légèrement partie prise (une sombre histoire impliquant le chasseur qui était trop zélé et la Bête qui du coup est mort dans les bras de Belle). Récemment, cette ONG a été anonymement approchée par la rébellion, et des terrains d'ententes ont été trouvées. Cependant, aucun accord formel ne s'est concrétisé pour le moment, même si c'est a priori en bonne voie.
+	\end{itemize}
+	
+	
+	% ==========================================================
+	\subsection{Le bal des rêves, négociations sur l'intégration d'Hyrule dans la confrérie}
+	
+	\par Suite aux premiers contacts officiels, un bal a été organisé en Hyrule pour fêter la découverte du nouveau conte. C'est également l'occasion de négocier les termes de l'intégration du conte dans la confrérie: les trois membres du conseil sont présents et Hyrule est représenté par \emph{Zelda}. Alternativement, la rébellion peut essayer d'attirer ce nouveau conte dans leur organisation. Finalement, c'est également l'occasion idéale pour instaurer des tractations commerciales entre contes, vu que les voyages entre contes sont sévèrement limités et que ce n'est pas tous les jours que des grands dirigeants se retrouvent au même endroit.
+	
+	\par Au delà de ça, la fête risque d'être beaucoup plus mouvementé que prévu, pour les raisons suivantes:
+	\begin{itemize}
+		\item \textbf{Black Hat}, venu d'un conte-univers (xkcd) très éloigné (et connecté par erreur via un passage spontané), a remplacé le chapelier fou et s'est invité dans la soirée. Sa compagne (cf \url{http://xkcd.com/433/}) tient actuellement le chapelier fou en otage et est en backup pour lui faire passer du matériel. Son but est de semer le chaoooooos (parce que trollage powa).
+		
+		\item \textbf{Wilhelm Grimm} et \textbf{Black Hat} ont trouvé un passage spontané dans un arrière-couloir du château, relativement bien planqué. Le dernier s'en sert pour communiquer avec sa femme et récupérer les objets qu'il a commandé. Le premier peut utiliser ce passage pour déguerpir s'il se retrouve démasqué, ou indiquer son existence à d'autres personnes de son choix.
+		\item \textbf{Hansel}, \textbf{Le chasseur} et \textbf{Prof} comptent se servir du médaillon (vu que ça fait maintenant 6 mois) en milieu de soirée, après s'être mis d'accord sur un type de destination (typiquement, s'ils se rendent compte qu'ils ne vont pas réussir à obtenir une ressource, ou s'ils ont potentiellement besoin de faire plus pression sur Zelda). Chacun d'entre eux ont leur morceau de médaillon
+		
+		\item La rébellion a réussit à s'infiltrer dans la fête pour, au minimum, présenter les choses sur un autre angle au négociateur d'Hyrule afin de les convaincre de ne pas joindre la confrérie, au minimum, voire de joindre la rébellion, si les choses se présentent bien.
+		
+		\item \textbf{Gretel} est contre l'intégration d'Hyrule (à l'inverse des 3 membres du conseil) à la confrérie et a bien l'intention de jouer toutes ses cartes dans cette direction. Notamment, elle sait que Garulfo (un autre membre de la confrérie présent au bal) est ambitieux, et elle compte jouer dessus pour monter des magouilles.
+		
+		\item Suite au soutient populaire, \textbf{la Belle} a réussi à se forcer une négociation, et a bien l'intention d'être une véritable épine dans le pied à la confrérie, voire à distribuer des tracts, soutenir les bonnes personnes, etc etc...
+		
+		\item \textbf{Barbe-bleu}, un "méchant" d'un conte (récemment reconverti en coiffeur/boucher et également membre de la rébellion) dont le château vient de se faire raider par le chasseur (en emportant sa collection). Il est venu sous une fausse identité (celle du \textbf{Père Noël}), en teignant sa barbe, et a bien l'intention de tuer le Chasseur pour se venger, si possible avec sa vie sauve. Le problème est que ce dernier est bien meilleur combattant que lui, et qu'il est entouré constamment de gardes. De plus, il sait que le chef de la rébellion (\textbf{le Chat Botté}) est présent au bal et voit d'un mauvais œil tout attentat violent qui pourrait faire perdre de la crédibilité à la rébellion.
+	\end{itemize}
+	
+	\paragraph{Forces militaires} Au niveau forces armées présents dans le château:
+	\begin{itemize}
+		\item \textbf{Zelda} contrôle la garde du château (modérément compétents, mais nombreux).
+		\item \textbf{Le chasseur} est arrivé avec un détachement d'hommes d'élite, mais relativement peu nombreux (une dizaine), chargés de la protection de la soirée (et pouvant agir au cas où les choses se passent mal). Parmi ces gardes, 2 sont en fait des taupes infiltrés de la rébellion, prêt à agir de leur côté/retourner leur veste dès qu'un certain signal leur sera donné.
+		\item \textbf{Barbe-bleue} sait très bien se battre, et vaut à lui tout seul 3 hommes d'élites.
+		\item \textbf{Zelda} peut également appeler (avec son ocarina) Link qui sait également se battre (vaut également 3 hommes d'élites à lui tout seul) et dont le but premier est de protéger la princesse...
+	\end{itemize}
+
+
+	\paragraph{Tractations commerciales} Le bal est également une occasion pour certains membres de s'échanger des ressources:
+	\begin{itemize}
+		\item \textbf{Hansel:} Possède 2 unités d'argent (fonds de corruption)
+		
+		\item \textbf{Gretel:} Possède 2 unités d'argent (fonds personnels et de généreux donateurs xénophobes)
+		
+		\item \textbf{Belle:} Possède 3 unités d'argent (fonds de la SPA) et de la \textbf{nourriture}.
+		
+		\item \textbf{Prof:} Possède 9 unités d'argent (2 des coffres de la confrérie, 7 venant du raid que le chasseur à fait sur le château de Barbe Bleue). Il a besoin de ressources de \textbf{bois}, \textbf{nourriture} et de \textbf{minerai} (vu que les entrepôts correspondants ont été pillés par la rébellion).
+		
+		Le plan initial était de proposer un marché à 3 argents par ressources à Zelda, histoire de la consolider en tant que partenaire commerciale et la convaincre de faire partie intégrante de la confrérie. Mais Prof essaye de faire le plus possible sa marge et va essayer de garder le plus d'argent possible d'ici la fin de la partie (4 unités d'argents = une villa dans un conte ensoleillé, 8 unités d'argent = une retraite plus que confortable assurée), tout en obtenant les ressources dont il a besoin (vu que s'il rate son deal et est la principale raison, il va se faire virer de son poste de marchand). Il a également du \textbf{textile} en excédent et voudra bien s'en débarrasser à bon prix, s'il trouve un acheteur.
+		
+		\item \textbf{Zelda:} Possède 1 unité d'argent (maigres fonds restant, suite aux problèmes qu'elle a avec Ganon). Elle possède des ressources de \textbf{bois}, \textbf{minerai} et de \textbf{poisson}. Cependant, elle n'est pas forcément prête à se séparer de ces ressources, vu qu'elle a besoin de certaines pour lutter contre Ganon.
+		
+		Son but final est d'avoir de quoi luter contre Ganon à la fin des tractations, ce qui peut se faire de plusieurs manières différentes. Une première solution serait d'avoir 10 unités d'argent et embaucher des protecteurs hors-conte (à trouver). Une seconde solution serait d'être en possession d'unité de \textbf{minerai} et de \textbf{nourriture} et 5 unités d'argent, afin de pouvoir construire et établir des défenses. Une troisième solution serait d'arriver à convaincre Ganon de ne pas être une menace au royaume d'Hyrule. D'autres solutions peuvent potentiellement exister.
+		
+		\item \textbf{Le Chat Botté:} Possède 2 unités d'argent. Il possède un stock de \textbf{minerai} secret (suite à des raids sur des entrepôts de la confrérie), et un stock de \textbf{textile} officiel. Il recherche principalement de la \textbf{nourriture}, afin de nourrir ses cellules et des populations locales mal vues par la confrérie.
+		
+		\item \textbf{Garulfo:} Possède 3 unités d'argent et a de la \textbf{nourriture} de disponible. Il a également un pré-accord avec le pays des merveilles visant à récupérer du \textbf{bois} pour 2 unités d'argent.
+		
+		\item \textbf{Black Hat:} N'a aucune idée de l'existence du pré-accord commercial qu'il a avec Garulfo (où il lui fournit du \textbf{bois}). Il aura donc besoin de récupérer son argent et ses ressources via sa femme une fois qu'il en aura appris l'existence (après interrogation du chapelier fou). Il aura donc 2 unités d'argent, du \textbf{bois} pour Garulfo et, s'il a envie, il a besoin d'acquérir du \textbf{textile} pour le pays des merveilles (même si en vrai, il s'en fout un peu).
+	\end{itemize}
+	
+	\par De plus, l'argent peut servir à corrompre des personnes, voire repayer une dette (à la place d'un service), sachant qu'il est mal vu de laisser une dette impayée. En moyenne, une ressource vaut a peu près 2,5 argents (2 est pas cher, 3 est cher, 1 est quasiment offert et 4 commence à devenir scandaleusement cher et à être comparables aux prix qu'on peut trouver sur le marché noir).
+	
+	\par Les ressources ne sont échangés uniquement via des \textbf{bordereaux d'échanges}, uniquement au moment où ces derniers sont remis (plus ou moins en secret) au MJ. Un bordereau d'échange est juste un bout de papier disant que "[Un tel] fournit [truc] à [un tel], en échange de [truc]", et avec la signature officielle des deux participants. Les contrefaçons ne sont pas autorisées (on part du principe que les sceaux sont trop compliqués pour être contre-façonnés). Si un chèque à blanc est fait, les participants sont avertis dès que l'échange est fait (càd, dès que le MJ a pris connaissance de l'échange et double-checke sa validité).
+	
+	\par \textbf{Remarques sur les ressources:}
+	\begin{itemize}
+		\item Le \textbf{textile} est fourni par le CB et Prof et uniquement demandé par BH. Cela permet à BH de donner des ressources à la confrérie ou la rébellion à sa guise. Cette ressource n'a pas de tension particulière d'acquisition.
+		\item Le \textbf{bois} est fourni par Zelda, BH (mais bloqué par Garulfo sauf si l'accord se fait brisé), et est demandé par Garulfo et Prof. A priori cette ressource ne devrait pas poser de problème, sauf si BH commence à faire le malin.
+		\item Le \textbf{minerai} est fourni par le CB et Zelda (sous condition), et est demandé par la confrérie, sachant que CB ne veut pas que son stock de minerai soit capté par la confrérie.
+		\item La \textbf{nourriture} est fournie par Zelda (sous condition), Belle et Garulfo, et est demandée par la confrérie et CB.
+	\end{itemize}
+	
+	
+	
+	\paragraph{Débat - comment gérer les antagonistes} Enfin, il y a un conflit d'idéologie sur comment gérer les menaces de contes:
+	\begin{itemize}
+		\item Le \textbf{chasseur} (confrérie) pense que les menaces de contes sont tous irrécupérables et que le mieux qui puissent arriver est de les exterminer. Après, sans casus belli explicite, la confrérie s'arrange juste pour limiter fortement leur possibilités.
+		
+		\item Le \textbf{Chat Botté} et le \textbf{Petit Poucet} (rébellion) trouvent que la confrérie est beaucoup trop bourrine dans leur manière de gérer les menaces de contes. Ils sont d'accord que certaines menaces de contes sont dangereux et a priori non récupérables, mais savent que la majorité d'entre eux ne sont plus dangereux si on leur offre une chance (autre que le conte leur offre). L'existence même de la rébellion prouve cela, vu que certaines menaces de contes ont rejoint leur rangs (notamment ceux à tempérament plus violent comme \textbf{Barbe Bleue}, ce qui leur offre une manière de lâcher de la pression).
+		
+		\item \textbf{Belle} (SPA) pense que tous les antagonistes de contes sont potentiellement rachetables, et qu'il suffit juste d'investir suffisamment de temps pour les comprendre et les remettre sur le droit chemin. La preuve? Regardez donc ce qui est arrivé avec la Bête.
+	\end{itemize}
+	En très gros, il s'agit d'un débat "nature VS nuture", des points de vue assez extrêmes étant représentés parmi les personnages.
+	
+	
+	
+	% ==========================================================
+	\subsection{Évènements au cours de la murder}
+	
+	\paragraph{Système des rumeurs} Durant le bal, des rumeurs circulent parmi les invités non-joueurs, et les joueurs peuvent investir du temps pour les écouter et glaner des informations. En pratique, une boîte à rumeur est installée, dans laquelle tout le monde peut piocher pour obtenir une nouvelle rumeur (limité à un tirage tous les 5 minutes). Des rumeurs sont rajoutés au fur et à mesure que le bal avance (typiquement les rumeurs sur l'identité de Barbe Bleue).
+	
+	Un personnage peut retirer des rumeurs jusqu'à ce qu'il en ait une nouvelle. La boîte commence avec grosso modo 5 rumeurs. Il peut être une bonne idée de garder le nombre maximum de rumeurs actives à 8.
+	
+	\par De plus, certains personnages peuvent manipuler les rumeurs qui circulent. Ces derniers sont Gretel (rajout de rumeur), Belle (rajout de rumeur), le Petit Poucet (modification de rumeur) et Hansel (suppression de rumeur).
+	
+	\par Les rumeurs que j'avais mise lors de la première partie sont (dans le désordre, et avec explication de la rumeur en italiques):
+	\begin{itemize}
+		\item Il parait que le château de Barbe Bleue a été détruit il y a une semaine et son trésor volé. \emph{Barbe Bleue}
+		\item Il paraît que le Chasseur s'est grandement enrichi il y a une semaine, après un raid sur le château de Barbe Bleue. \emph{Barbe Bleue}
+		\item Le père Noël semble étonnamment bien musclé depuis la dernière fois que je l'ai vu (il y a environ 5 ans). \emph{Barbe Bleue - mi-partie}
+		\item Le narrateur est très beau parleur... et serait célibataire (hihihi...) \emph{Parce que mon premier joueur du Narrateur était très bon dans son RP}
+		\item Le chat de Cheshire aurait été vu à deux endroits simultanément. \emph{Black-hat qui a fait des expériences trollesques avec ce dernier au pays des merveilles}
+		\item Il y a eu encore une disparition de jeune fille au conte du Chaperon Rouge. \emph{Référence au fait que chaque contes ont un pattern qui se répète}
+		\item Il paraîtrait qu'un conte remplit de lions, hyènes et autres animaux a été découvert il y a quelques mois. \emph{Le Roi Lion}
+		\item Il parait qu'il y a une civilisation d'êtres de roche à Hyrule. \emph{Référence aux Gorons (une des 5 races dans Zelda, Ocarina of Time)}
+	\end{itemize}
+	
+	\par Les rumeurs que j'avais mise lors de la seconde partie sont:
+	\begin{itemize}
+		\item Il parait qu'un conte remplit de lions, hyènes et autres animaux \textbf{qui parlent} (vous rendez vous compte!) a été découvert récemment par les explorateurs de la Confrérie.
+		\item Le chat de Cheshire aurait été vu à deux endroits simultanément\dots (et plusieurs savants d'un truc appelé "physique quantique" ont été retrouvé en train de pleurer dans leur coin après l'annonce)
+		\item Il paraît que le château de Barbe Bleue et une bonne partie du village voisin ont été détruit la semaine dernière. On a retrouvé aucune trace du trésor de Barbe Bleue.
+		\item Il paraît qu'il y a de multiples races humanoïdes à Hyrule, dont des êtres des forêts, des êtres de roche et des hommes poissons.
+		\item C'est stupéfiant! Voilà la 5ème personne Hyrulienne qui semble intéressée par la citronelle et anti-moustiques, et qui me demande si ça marche aussi sur les fées. Mais pourquoi?
+		\item Le père Noël semble étonnamment bien musclé depuis la dernière fois que je l'ai vu (il y a environ 5 ans). Ah... si seulement il aurait été plus jeune, j'aur-hum hum, non rien
+		\item Le "méchant de conte" local à Hyrule serait un magicien nommé Ganon. Ce dernier semble se réincarner, tenter une invasion et se faire battre par un héros local en combat singulier.
+		\item Il paraît que le chasseur a été aperçu dans le conte de Barbe Bleue avec des chariots remplis de coffres à tréso
+		\item J'ai retrouvé des poils de\dots euh\dots barbe? bleue sur une cuvette au petit coin. Ce qui est étrange, vu qu'aucun des invités ne porte une couleur pareille.
+		\item Beaucoup d'évènements étranges semblent se passer au Pays des Merveilles... ... Bon d'accord, beaucoup PLUS que la normale
+		\item Il semble avoir eu encore une disparition de jeune fille au conte de Petit Chaperon Rouge. Mais que fait la milice!
+		\item Assez étonnamment, le "héros d'Hyrule" n'est pas présent à la soirée, et quand j'ai demandé pourquoi, on m'a répondu qu'il n'était \textbf{vraiment} pas bavard.
+		\item Comment ça les coffres de la confrérie sont plein? Aux dernières nouvelles, cette foutue rébellion nous avait laissé quasiment à sec!
+		\item Apparemment, des champignons sont actuellement détonnés au pays des merveilles.
+	\end{itemize}
+	
+	\paragraph{Minions et réseaux d'informateurs/espions} Certains personnages ont des pouvoirs qui peuvent leur attribuer des sous-fifres, espions ou informateurs. Par exemple, Garulfo peut parler aux animaux et, vu qu'il y a des petits rongeurs dans le château, peut s'en servir pour récupérer discrètement des informations. De même, Hansel dispose d'un réseau d'espion multi-conte et du coup peut récupérer facilement des infos fiables dans tous les contes. Lancer des enquêtes prend du temps (en moyenne, 10 minutes, variable suivant l'ambition de l'enquête et sa difficulté) et doit être signalé à un MJ.
+	
+	\paragraph{Évents durant la murder} Différents événements se passent pendant la murder:
+	\begin{itemize}
+		\item \textbf{Début de la murder:} Arrivée des invités, présentation officielle, le bal se lance. Le petit poucet reconnaît Barbe Bleue. Le narrateur a ses suspicions sur Barbe Bleue et Black Hat, et est au courant de l'existence du passage supplémentaire.
+		
+		Durant toute la murder, Black Hat reçoit des coups de fil réguliers de sa femme (généralement en pleine conversation)
+		
+		\item \textbf{Milieu de la murder (1):} La confrérie a possibilité d'ouvrir un nouveau portail en utilisant leur médaillon. Quand ça se fait, un tremblement de terre survient et le narrateur s'évanouit pendant quelques minutes en tenant sa tête entre ses mains (et a un topo sur l'existence du nouveau passage). Des rumeurs suspicieuses sur le Père Noël commencent à surgir. Des rumeurs à propos du pays des merveilles commencent à circuler.
+		
+		Hansel réussit à contacter Ganon, la "menace de conte" locale. Si ce dernier commence à s'agiter trop (suite à des actions de Hansel), Zelda peut en être informé. En gros, Ganon est un militariste, chef d'un peuple du désert voisin d'Hyrule qui convoite les ressources de cette dernière, et la triforce (seul artefact du monde qui peut exhausser des souhaits). Son but principal est de mener son peuple à la victoire sur Hyrule (qui sont des terres bien plus fertiles), ou au minimum assurer la survie de son peuple (typiquement en rendant son désert plus habitable ou plus riche en ressources).
+		
+		\item \textbf{Milieu de la murder (2):} S'il y a eu des morts, des nouveaux personnages non-invités au bal et complètement étranger à la confrérie peuvent être introduit à ce moment (notamment, dépendant du choix fait par la confrérie, ça peut être des personnages du conte qui vient d'être connecté). Exemple de persos supplémentaires: Cendrillon (outre son passé tragique et son passage dans les prisons de la confrérie, elle cherche a tout prix un prince charmant), Robin des Bois (peut voler de l'argent), Capitaine Crochet (dont le but est de s'enrichir et qui est une menace de conte inconnu, vu que le pays imaginaire n'a pas encore été exploré).
+		
+		Des rumeurs carrément accusatrices pointent sur Barbe Bleue, voire Black Hat (dépendant de s'il y a des investigations en cours ou non sur ces derniers)
+		
+		Des rapports de nouveaux passages qui sont apparus un peu partout sur le territoire de la confrérie arrivent.
+		
+		\item \textbf{Fins de la murder:}
+		\begin{itemize}
+			\item Si le narrateur arrive à mettre sa main sur le médaillon complété: (i) il disparaît (en gros, il arrive enfin à revenir sur Terre) (ii) au moment de sa disparition, le MJ lui demande ses sentiments sur l'existence des passages sur les mondes (qu'il veule ou pas toucher à ces passages). Ces sentiments déterminent l'avenir des passages (càd, es-ce qu'ils restent, es-ce qu'ils se ferment plus ou moins doucement, es-ce qu'ils continuent à se multiplier jusqu'à faire tomber les barrières entre les mondes?). Si la confrérie possède toujours les morceaux de médaillon en fin de partie, les bordures des contes tombent au prochain passage (dans 6 mois) mais le multi-vers n'est pas détruit.
+			
+			\item Signature des traités entre Hyrule et les autres corps (au minimum la Confrérie officiellement, peut-être d'autres officieusement).
+			
+			\item Futurs de la confrérie, de la rébellion et de la SPA (si applicable)
+		\end{itemize}
+	\end{itemize}
+	
+	
+	\section{Idées de persos supplémentaires}
+	
+	Voilà quelques idées de persos supplémentaires, pour faire jouer des morts:
+	\begin{itemize}
+		\item \textbf{Cendrillon} Princesse psychopathe qui fait une fixation sur trouver son prince charmant. Elle désigne un joueur (masculin?) au moment où elle arrive, flashe sur lui et se démerde pour se mettre avec ce dernier à tout prix. Pouvoir spécial: les objets ont la parole quand elle est seule (ce qui la permet d'avoir un réseau d'espion)
+	
+		\item \textbf{Robin des Bois} Se présente avec un faux nom. A le pouvoir de voler de l'argent (1 fois tous les 30 mins), mais ne peut pas transporter plus d'une unité d'argent sur lui. Objectif: voler au riche pour donner à ceux qui en ont besoin.
+	
+		\item \textbf{Link} Bourrin (très fort), toujours lien d'invocation. Limitation: peut uniquement parler en "hup hup... yaaaaa!"
+	
+		\item \textbf{Envoyé de Ganon} Peut servir pour négocier la paix avec Ganon, ou remplacer Zelda à la tête du conte (alliance avec la confrérie?)
+	
+		\item \textbf{Un personnage du monde relié par la confrérie}
+	
+		\item \textbf{Un personnage xénophobe} Pour aider Gretel
+	
+		\item \textbf{Capitaine Crochet} Menace de conte
+	
+		\item \textbf{Stan Lee} Narrateur du multivers d'à côté qui veut savoir pourquoi le tissus entre les mondes est en train de se fissurer (aide Narrateur)
+	\end{itemize}
+		
+%	\paragraph{Musique:} https://www.youtube.com/watch?v=cMcyAp24sxk&index=38&list=PLwRoVddfw25fNWyZdOvH288mnAcZ0-6db
+}
+
+
+
+
+
+
+
+
+% ***************************************************************************************************
+% *** Titre factice pour les fiches de personnages (et histoire de savoir qui est qui pour le MJ) ***
+% ***************************************************************************************************
+
+\players[1]{\begin{center}\textbf{Le narrateur, personnalité éminente et puissance mystique}\end{center}}															% (id secrète) Wilhelm Grimm
+\players[2]{\begin{center}\textbf{Hansel, membre du conseil de la confrérie des rêves - Hansel et Gretel}\end{center}}
+\players[3]{\begin{center}\textbf{Le chasseur, membre du conseil de la confrérie des rêves - Petit Chaperon Rouge}\end{center}}
+\players[4]{\begin{center}\textbf{Prof, membre du conseil de la confrérie des rêves - Blanche Neige et les 7 nains}\end{center}}
+\players[5]{\begin{center}\textbf{Gretel, femme de Hansel (membre du conseil de la confrérie des rêves) - Hansel et Gretel}\end{center}}
+\players[6]{\begin{center}\textbf{Garulfo, membre (récent) de la confrérie des rêves - Royaume de la grenouille et du dragon}\end{center}}
+\players[7]{\begin{center}\textbf{Le représentant du chapelier fou, membre de la confrérie des rêves - Pays des merveilles}\end{center}}	% (id secrète) Black Hat
+\players[8]{\begin{center}\textbf{Le Chat Botté, conseiller de la confrérie des rêves - Le Chat Botté}\end{center}}
+\players[9]{\begin{center}\textbf{Le petit poucet, assistant du conseiller de la confrérie des rêves - Le petit poucet}\end{center}}
+\players[10]{\begin{center}\textbf{Le père Noël, personnalité éminente - Royaume du Pôle Nord}\end{center}}									% (id secrète) Barbe-bleue
+\players[11]{\begin{center}\textbf{Zelda, princesse d'Hyrule}\end{center}}
+\players[12]{\begin{center}\textbf{Belle, membre fondateur de la Société Protectrice des Antagonistes}\end{center}}
+
+
+
+% ********************************************************************
+% *** Description de l'univers - version partielle (tout le monde) ***
+% ********************************************************************
+
+\players[1][2][3][4][5][6][7][8][9][10][11][12]{
+	\section{Il était une fois... les contes (informations officielles)}
+	
+	\par L'univers est constitué d'une multitude de mondes, appelés \emph{contes} qui sont tous séparés les uns des autres. Il y a 50 ans, des passages ont commencé à apparaître entre les mondes de manière spontanée et imprévisible, connectant de plus en plus les contes entre eux. Afin d'éviter toute interférence néfaste entre contes et d'établir des bonnes relations, trois personnalités venant de contes très connectés (\emph{Hansel}, \emph{Le chasseur} (Le petit chaperon rouge) et \emph{Prof} (Blanche-Neige et les 7 nains)) se sont rassemblés en une confrérie, appelée la \emph{confrérie des rêves}.
+	
+	\par Au fil des années, la confrérie se développa, explorant les contes pour découvrir de nouveaux passages, gérant la diplomatie entre les contes et s'étendant au fur et à mesure. D'autre part, elle établit un réseau commercial entre ces contes et monta également un service de mercenariat, afin de surveiller les "menaces des contes" et d'éviter que ces dernières ne "fassent basculer le conte" (c'est à dire qu'ils réussissent à prendre le dessus).
+	
+	% Incident de Cendrillon + Rebellion des grands méchants loups
+	\players[1][2][3][4][5][6][8][9][10][12]{			% Pas Zelda et Black Hat
+		\par Cependant, il arrive à la Confrérie de faire des erreurs, comme ça a été le cas pendant l'incident de Cendrillon. En bref, suite à un concours de circonstance regrettable, les éclaireurs ont mal déterminé la menace du conte. De plus, voulant agir contre une potentielle menace imminente, les événements (non officiels) ont fait que la mauvaise personne a épousé le prince du royaume, sans que la confrérie puisse le savoir à ce moment là. Les premiers contacts diplomatiques furent établis comme d'habitude mais, quelques années plus tard, le conte de Cendrillon tenta de s'emparer militairement des contes voisins, tentative bloquée par la confrérie. Se rendant compte de l'erreur de personne, la Confrérie reconnut sa méprise et pris le monde de Cendrillon sous tutelle.
+		
+		\par Une organisation secrète, nommée la \emph{rébellion des grands méchants loups}, tente de contrer clandestinement l'influence de la confrérie. Du fait de la nature d'une telle organisation, les seules informations disponibles publiquement proviennent de rumeurs. Ainsi, il paraîtrait que les rangs de la rébellion soient majoritairement constitués de "menaces de contes" qui en veulent à la confrérie de leur retirer toute chance de pouvoir faire "basculer le conte". D'où la raison pour laquelle ils cherchent à abattre la confrérie. On sait que la rébellion utilise des passages spontanées non découverts par la confrérie et personne ne sait qui est le chef de la rébellion.
+		
+		\par Il y a quelques mois, une ONG (nommée la \emph{Société Protectrice des Antagonistes}) a été fondée par \emph{Belle}. Cette dernière lutte contre l'ingérence (devenue quasi-systématique) de la confrérie envers les "menaces de contes", et propose des solutions alternatives d'auto-gestion des contes. La SPA a réussi à obtenir un soutien non négligeable du public et commence tout juste à avoir des soutiens politiques bien placés.
+	}
+	
+	\section{La murder: le bal d'Hyrule}
+	
+	\paragraph{Contexte} Très récemment, un passage menant vers Hyrule (Zelda) a été découvert par la Confrérie. Après un premier contact diplomatique, un bal dans le château d'Hyrule est donné, pour fêter la découverte récente du conte. La majorité des personnalités de la Confrérie seront là, plus quelques invités de marque. Ce bal constitue notamment une occasion rêvée de forger des alliances (politiques, commerciales, \dots) avec le nouvel acteur politique, voire de comploter pour certains autres. La liste officielle des invités est:
+	\begin{center}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\emph{Zelda} & princesse d'Hyrule & Hyrule\\
+		\emph{Hansel} & membre du conseil de la confrérie des rêves & Hansel et Gretel\\
+		\emph{Gretel} & femme d'Hansel & Hansel et Gretel\\
+		\emph{Le Chasseur} & membre du conseil de la confrérie des rêves & Le chaperon rouge\\
+		\emph{Prof} & membre du conseil de la confrérie des rêves & Blanche-neige\\
+		\emph{Le Chat Botté} & conseiller de la confrérie des rêves & Le Chat Botté\\
+		\emph{Le Petit poucet} & assistant du conseiller de la confrérie des rêves & Le petit poucet\\
+		\emph{Le Chapelier Fou} & membre de la confrérie des rêves & Pays des Merveilles\\
+		\emph{Garulfo} & membre (récent) de la confrérie des rêves & Royaume de la grenouille et du dragon\\
+		\emph{Le Narrateur} & personnalité éminente & multi-conte\\
+		\emph{Le Père Noël} & personnalité éminente & multi-conte\\
+		\emph{Belle} & membre fondateur de la SPA & La Belle et la Bête\\
+		\hline
+	\end{tabular}
+	\end{center}
+	
+	\paragraph{Combat et forces armées en présence} Il y a 4 niveaux de puissances, allant de très faible à très fort. Une attaque surprise (dans le dos, sans avoir vu venir l'attaque) monte l'attaque d'un cran de puissance. Une attaque non armée (à main nue) baisse l'attaque d'un cran de puissance. Ainsi, une attaque surprise non armée ne change pas le cran (et prend du temps, le temps de rouer de coups ou étrangler la cible). Les forces publiquement en présence sont les suivantes:
+	\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+	\hline
+	Très faible & Bon & Fort & Très fort \\
+	\hline
+	Personne lambda & 100 gardes du château (Z) & 10 soldats d'élite (CdR) & Le Chasseur\\
+	 & Garulfo & Le Chat Botté & \\
+	 & & Le Petit Poucet & \\
+	\hline
+	\end{tabular}
+	\end{center}
+	
+	\par Il est possible de contre-balancer un joueur de niveau de puissance supérieur par le nombre (en gros, un ordre de grandeur de plus de personne du niveau de puissance juste en dessous). Par exemple,  en combat loyal, 10 soldats d'élite valent un chasseur, 100 gardes du château valent un chasseur.
+	
+	\par Notez que les combats ne sont pas instantanés, sauf si grande disparité entre les forces d'attaque et de défense (avec modificateurs). Il faut au moins 2 crans de différence pour résoudre un combat instantanément. Un combat avec 1 cran de différence dure au moins une minute, ce qui peut laisser l'opportunité à certaines personnes à proximité de rejoindre le combat en renfort. Un combat sans cran de différence est équilibré et dure par défaut plusieurs minutes (si rien ne déstabilise l'équilibre de ce combat entre temps, un tirage au pile ou face peut être utilisé pour le résoudre).
+	
+	\par De plus, si une personne sur le point d'être tuée n'est pas prise par surprise, elle a le temps de pousser un grand cri juste avant sa mort.
+	
+	\paragraph{Rumeurs, ou l'art de laisser traîner ses oreilles} Il est possible au cours du bal d'aller discuter avec les autres invités et apprendre quels sont les derniers potins. En pratique, une boîte à rumeurs sera disponible avec un certain nombre de rumeurs écrits sur des bouts de papier à l'intérieur. Il est possible d'en tirer maximum une tous les 5 minutes. Si vous tirez une rumeur que vous avez déjà entendu, vous pouvez en retirer une autre (mais vous ne pouvez pas en re-retirer une troisième si vous connaissez aussi la seconde). Au cours de la partie de nouvelles rumeurs vont régulièrement être rajoutées, suivant ce qui se passe dans les contes.
+	
+	% Hansel, Garulfo, Chat Botté, Petit Poucet et Zelda
+	\players[2][6][8][9][11] {
+		\paragraph{Enquêtes et réseaux d'espionnage} Si vous lisez ces lignes, votre personnage a la possibilité de lancer des enquêtes. Pour faire cela, allez voir le MJ, dites ce que vous voulez lancer comme enquête et il vous donnera un temps (en moyenne 10 minutes, mais variable suivant la difficulté). Une fois ce temps écoulé, revenez voire le MJ et il vous donnera le résultat de l'enquête.
+	}
+	
+	\players[2][4][5][6][8][9][11][12]{ % Pas le narrateur, le chasseur, Black Hat (muahahah :D ), Barbe Bleue
+		\paragraph{Argent et échanges commerciaux} Le bal est également l'occasion idéale de faire des échanges de ressources ou d'informations. Certains personnages commencent avec de l'argent et des ressources et ont pour objectif de récupérer des ressources ou de l'argent.
+		
+		\par Afin de donner un ordre de grandeur, une ressource peut être vendue de 1 à 4 unité d'argents, avec une moyenne pour 2,5 unités d'argent. C'est à dire, vendre une ressource à 2 unités d'argent est un bon prix, 3 unités d'argent commence à être cher, 4 unités est très cher et 1 unité est quasiment offert. Bien entendu, des services et faveurs peuvent être échangés en complément ou remplacement de l'argent.
+		
+		\par Les échanges d'argent peuvent se faire librement entre joueurs. La gestion des ressources peut se faire uniquement pas \textbf{bordereau} interposé. Un bordereau est simplement un bout de papier disant que "[Personne 1] échange [Truc] avec [Personne 2], en échange de [Bidule]", puis le sceau (signature) des deux personnes (qui est impossible à être contrefait). Un échange s'effectue seulement quand le MJ en charge des échanges reçoit le bordereau. Si des ressources sont échangés, le MJ vérifie que les ressources sont toujours disponibles (càd qu'il ne s'agit pas d'un chèque en blanc).
+		
+		\par Si une faveur ou un service négocié dans un bordereau n'est pas effectué de manière convenable ou tout bonnement ignoré, la partie trompée peut exposer publiquement le bordereau et dénoncer publiquement que la personne correspondante n'a pas d'honneur. Cela peut notamment avoir des conséquences RPs.
+		
+		\par Notez que les bordereaux ne sont valides que pour des échanges instantanés de ressources. Cela veut dire que Hyrule peut participer à des échanges de ressources et argent, même si ce pays décide finalement de couper tout contact avec la confrérie par la suite.
+		
+		\par L'argent peut également servir dans d'autres situations, comme acheter des informations ou des services d'une autre personne. Un cas particulier est quand une personne sauve la vie d'une autre personne ou rend un grand service en se mettant en danger considérable. De telles actions créées une dette et il est attendu que le personnage sauvé s'en acquitte. Cela peut être fait plus ou moins à l'amiable, par de l'argent (de 1 à 3 argents, généralement dépendant des risques pris), ou d'autres moyens (informations, service spécifique à rendre plus tard, \dots)
+	}
+}
+
+
+
+\players[2][3][4]{
+	\section{Fondation de la confrérie des rêves (connaissances communes à Hansel, Le Chasseur et Prof)}
+	
+	\par Il y a 50 ans des passages commencèrent à apparaître entre les contes et des gens/créatures se retrouvèrent perdus dans un autre conte par inadvertance. Suite à une enquête menée par Hansel, Le Chasseur et Prof, alors simples personnalités de leur contes respectifs, vous avez pu identifier la source de ces problèmes. Apparemment, un voyageur nommé \emph{Charles Perrault} utilisait un artefact nommé "la porte des rêves" pour ouvrir ces passages et pour voyager entre les contes. Cependant, ces derniers n'étaient pas refermés derrière lui, bien qu'ils soient placés dans des endroits discrets.
+	
+	\par Après l'avoir confronté avec ces informations et lui avoir demander de cesser ses voyages, Perrault refusa, apparemment convaincu que c'était son droit de voyager où il veut. Enervés, vous lui avez par la suite tendu une embuscade. Cette dernière, organisée par le Chasseur, a dégénéré et Charles Perrault a été tué ainsi que l'un de ses deux compagnons (un enfant s'appelant Jacob Grimm). Son frère, Wilhelm Grimm a réussi à s'échapper, a probablement pas réussi à survivre du fait de ses lourdes blessures, mais vous craignez qu'il ait eu le temps de parler avec des gens avant de mourir. Vous en avez profité pour récupérer la \emph{porte des rêves} (un artefact sous forme de pendentif) et de vous partager cet artefact en trois morceaux.
+	
+	\par La situation se stabilisa, mais les passages entre les contes sont resté ouverts. Ainsi, fort de vos appui diplomatique dans vos trois contes d'origine, vous avez donc fondé la \emph{Confrérie des rêves} pour chercher activement ces passages et gérer tout ce qui touche à la communication entre les contes. Les premières années, vous vous êtes concentré à localiser les passages existants entre les contes, et à prendre contact avec les habitants respectifs. Via des longues négociations (et, si nécessaire, quelques complots quand cela était nécessaire), vous avez réussi à imposer la Confrérie comme principale interface diplomatique/commerciale entre tous les contes. De plus, vous aviez même réussi à obtenir des "tutelles" de certains contes (ce qui correspond à un conte administré directement par la confrérie, en échange un certain nombre d'avantages typiquement économiques et militaires, du fait qu'il devient un point de rassemblement de la confrérie).
+	
+	\vspace{0.4cm}
+	\par Il y a une vingtaine d'années, alors que le nombre de passages nouvellement découverts diminuaient, la confrérie commença a perdre de la vitesse sur le plan économique et politique (correspondant à une potentielle fin de l'âge des explorations). Afin d'éviter une crise, vous vous êtes mis d'accord pour vous servir secrètement de la porte des rêves de manière régulière et contrôlée, afin de connecter de nouveaux contes aux caractéristiques bien choisies. Vous avez donc découverts les limitations de la porte des rêves:
+	\begin{itemize}
+		\item Une "limitation de portée": deux mondes connectés ne doivent pas trop différer.
+		\item Le temps de recharge de l'artefact (d'environ 6 mois)
+		\item La capacité d'imagination de l'utilisateur
+	\end{itemize}
+	
+	\par Afin de pouvoir gérer la confrérie qui commence à prendre une ampleur considérable, vous avez recruté de multiples conseillers, à la tête desquels se trouve le \emph{Chat Botté}. Ces derniers font constamment les états des lieux géopolitiques et commerciaux de la Confrérie et des contes et vous fournissent régulièrement des rapports détaillés. Ces mêmes rapports sont utilisés pour que vous en déduisez le meilleur conte que l'on devrait relier à la confrérie actuellement.
+	
+	\par Au fil des années, des contes de plus en plus étranges furent connectés, comme par exemple le \emph{royaume de la Grenouille et du Dragon} (d'où vient le prince \emph{Garulfo}, connecté il y a 5 ans, membre de la confrérie depuis). Par exploration de ces nouveaux contes, vous aviez retrouvé des nouveaux passages connectés vers votre réseau de contes (généralement donnant sur des endroits très peu accessibles, et donc qui avaient très peu de chances d'être découvert de votre côté), appuyant le fait que vous n'aviez finalement pas fini par découvrir tous les passages laissés par Perrault.
+	
+	\vspace{0.4cm}
+	\par Au niveau diplomatique, un incident notable s'est produit il y a 10 ans, dans le conte de Cendrillon. Un passage venait d'être découvert vers ce monde et une équipe d'explorateur était en cours d'exploration. Ces derniers sont tombés en pleine nuit sur de la magie potironnesque avec "du lierre grouillant de partout", qui semblait maléfique. Du coup, ils n'ont pas eu d'autre choix que de "sécuriser la zone" discrètement et d'interpeller les deux personnes présentent à ce moment (dont une, la méchante sorcière potironnesque, ayant fortement résisté et a fini par être tuée).
+	
+	\par Le reste de l'exploration du conte et de la prise de contact se passa normalement et un accord commercial fut conclus entre la confrérie et le nouveau roi du royaume (ce dernier ayant été très récemment marié). Tout semblait relativement normal (il y eu quelques rapports de persécution du peuple du conte en question, mais il s'agissait de problème en dehors de la juridiction de la Confrérie), jusqu'au jour où la reine a convaincu le roi d'envahir les contes voisins afin d'agrandir son royaume. S'en suivit une guerre de 7 mois qui se conclut par une victoire de la confrérie (notamment grâce à la "découverte inopinée" d'un passage stratégiquement bien placé pour envahir leur conte), et la mise en tutelle du conte de Cendrillon.
+	
+	\par Peu après ces événements, un mouvement de résistance (surnommé \emph{la rébellion des grands méchants loups} par le Chasseur) a commencé à s'exposer au public et annoncer ouvertement leur lutte contre la confrérie. Leurs méthodes préférées sont le sabotage (d'installation, \dots), les complots politiques, la contrebande (vous supposez par passages non découverts par la confrérie), mercenariat concurrent, \dots Hansel avait entendu parlé de ce mouvement il y a 30 ans environ, mais leurs actions tenaient plus de la résistance passive et de la distribution de tract qu'autre chose. Le chasseur est occupé à traquer ces rebelles avec une partie de ses mercenaires.
+	
+	\vspace{0.4cm}
+	\par Ce soir, vous comptez utiliser la porte des rêves pour créer un passage partant d'Hyrule vers quelque part d'autre (soit vers un conte déjà relié, si Hyrule semble ne pas vouloir de tutelle de la Confrérie, soit vers un nouveau conte dont les caractéristiques sont à déterminer).
+}
+
+
+
+% ****************************************************************************************************************************************************
+% ****************************************************************************************************************************************************
+% ****************************************************************************************************************************************************
+
+
+% ***********************
+% *** Fiche de persos ***
+% ***********************
+
+
+%1) Grimm (voyageur des origines)
+\pageForPlayer{1}{Wilhelm~Grimm}{
+	\item[Nom officiel] Le narrateur
+	\item[Identité secrète] Wilhelm Grimm
+	\item[Conte d'origine] La Terre. Officiellement, un peu partout (tu es présent dans plusieurs contes et chargé de retranscrire les événements)
+	\item[Stéréotype] Voyageur du multivers, disciple de Perrault
+	\item[Objectif] Récupérer le portail des rêves à tout prix pour rentrer chez soi... et accessoirement empêcher le multivers de s'effondrer
+	\item[Atout majeur] Expert du multivers des contes (sent les passages et l'essence des personnages de conte), connaît le secret de la confrérie
+	\item[Inconvénient majeur] Se faire démasquer par la confrérie se révélera très probablement fatal
+	\item[Possessions] Une dague cachée sur soi (ayant passé la sécurité)
+	\item[Entraînement au combat] Très faible (ne fait pas le poids contre un soldat lambda)
+	\item[Compétences spéciales] Peut rentrer instantanément chez lui s'il est en possession de la porte des rêves (médaillon actuellement en possession de la confrérie) - Détection des passages (passif)
+
+}{
+	\paragraph{Histoire personnelle} Cela fait plus de 50 ans que tu vadrouilles de contes en contes, et tes souvenirs de ton enfance sont assez vagues, mais voilà tout ce dont tu te souviens. Tu sais que tu viens d'un conte (enfin, tu es même pas sûr que ce soit vraiment un conte), appelé "Terre". Toi et ton frère (\emph{Jacob Grimm}) étaient des orphelins recueillis par un certain \emph{Charles Perrault}. Ce dernier avait à sa possession un artefact-médaillon nommé la \emph{porte des rêves} qui lui permettait de créer des passages entre les contes, du moment où on imaginait sa destination. Il s'en servait pour voyager (en tant qu'observateur) de contes en contes, rencontrant les habitants et rapportant les histoires qu'il entendait.
+	
+	\par Hélas, après quelques années, des passages commencèrent à être découverts, des résidents commencèrent à voyager par accident entre les contes. Les habitants de certains contes furent mis en contact entre eux et se rendirent compte que Perrault et ses deux disciples étaient des dénominateurs communs. Ils commencèrent à se douter de quelque chose et demandèrent des explications. Cependant, ils furent pris de cours par un complot monté secrètement par des personnalités importantes de trois des contes les plus fréquemment visité par Perrault. Les comploteurs (Hansel, Le Chasseur et Prof) montèrent une embuscade, qui vous surpris complètement. Au final, Perrault fut tué ainsi que ton frère, mais tu réussis à t'échapper in extremis (mais sévèrement amoché) en sautant dans un passage non découvert.
+	
+	\par Tu as atterri dans une sorte de caverne replis d'or et artefacts magiques. Posé au centre de la salle se trouvait sur un piédestal une lampe magique. N'ayant rien à perdre vu tes blessures, tu activas l'artefact, priant que ce soit quelque chose d'utile. Un génie en est sortit et t'accorda 3 souhaits. Ton premier souhait fut qu'il te guérisse immédiatement de tes blessures.
+	
+	\par Une fois remis à neuf, tu souhaita par la suite de ne jamais être reconnu par la confrérie et acquérir suffisamment de connaissances afin de pouvoir t'intégrer et naviguer entre les contes. Cependant, les pouvoirs du génie étaient limités à son propre conte et aux individus à l'intérieur de ces derniers. Il te proposa une alternative: changer ton apparence de manière drastique, te donner le pouvoir de détecter des passages entre les contes (et de manière générale sentir le tissu de la réalité des contes) et une nouvelle identité: celle du \emph{Narrateur}.
+	
+	\par Perrault avait en sa possession la porte des rêves, et tu penses que cet artefact a été récupéré par les conspirateurs et a motivé la création de la \emph{Confrérie des rêves}. Le fait que tu constates une augmentation du nombre de passages entre les contes, le fait que des contes que vous n'avez jamais visité ont été relié et le fait que ces derniers semble systématiquement arranger la Confrérie sur le long terme semble pointer sur le fait que la Confrérie se sert du médaillon.
+	
+	\par Une autre chose que tu as remarqué est l'existence des passages spontanés: apparemment, cette sur-utilisation du médaillon fait apparaître d'autres passages de manière aléatoire autre part. Tu crains donc que les frontières entre les contes sont en train de s'affaiblir de plus en plus, et que ces dernières risquent de s'abattre violemment (au mieux, rassemblant tous les contes en un monde et provoquant le chaos total, au pire, provoquant une réaction en chaîne qui entraînera la destruction du multi-vers). Tu es ainsi chargé de sauver (au passage) le multivers (sans vouloir te mettre la pression :D ).
+	
+	\par Ton problème principal, c'est comment te prendre pour accéder au médaillon. Outre le fait que tu es probablement traqué par les mercenaires de la Confrérie, les trois membres du conseil sont trop bien protégés pour que tu ais eu une chance de récupérer ton artefact. Cependant, ces chances s'améliorent petit à petit, notamment grâce à la formation de la rébellion.
+	
+	
+	\par Au fil des années et de tes voyages, tu as acquis une grande connaissance sur la structure de ce multivers et a amélioré tes pouvoirs. Ainsi, outre ton pouvoir de sentir les passages entre contes (conféré par le génie):
+	\begin{itemize}
+		\item Tu es maintenant capable de pouvoir prédire la localisation des passages spontanés à partir de la localisation des passages "officiels" (créés par la confrérie).
+		\item Tu as remarqué que chaque conte a un pattern qui a tendance à se répéter régulièrement (sans que les habitants des contes s'en rende vraiment compte). Cela te permet ainsi de prédire certains évènements à l'avance, mais seulement s'il n'y a pas d'interférence externe majeure.
+		\item Tu peux sentir l'aura des personnages de contes, et connaître sa place dans le conte ou au minimum avoir une bonne idée de sa personnalité.
+		\item Tu es considéré par le public comme une personnalité multi-conte, tout comme l'est le \emph{Père Noël}. Voire même une puissance mystique fondamentale de l'univers du fait de tes pouvoirs (tu ne sais pas ce qu'ils ont fumé, mais c'était probablement de la bonne pour sortir ça, et tu t'es bien gardé de les détromper).
+	\end{itemize}
+	
+	\par Il y a quelques semaines, tu as eu vent de la soirée organisé dans ce nouveau conte relié, nommé \emph{Hyrule}, et tu as réussi à te faire inviter au bal.
+	
+	\par Tes objectifs sont donc de récupérer la porte des rêves (en passant, de préférence, par la mort des membres du conseil) et de rentrer chez toi avec (sachant que tu penses que le procédé sera quasi-instantané). Tu sais que tu ne pourras pas faire grand chose de toi même physiquement, mais tes connaissances mystiques et sur la fondation de la confrérie vont d'être un atout. Cependant, si tu n'es pas assez discret et que tu te fais identifier par la confrérie, ta durée de vie risque de chuter drastiquement\dots
+	
+	\paragraph{La porte des rêves} La porte des rêves est un médaillon ayant la capacité de créer un portail vers un autre monde. Les limitations de cet artefact sont:
+	\begin{itemize}
+		\item Une "limitation de portée": deux mondes connectés ne doivent pas trop différer.
+		\item Le temps de recharge de 6 mois
+		\item La capacité d'imagination de l'utilisateur. Notamment, c'est pour cette raison que tu penses qu'aucun monde non-conte a été relié.
+		\item Lorsqu'un passage est créé entre deux mondes (non relié), un passage spontané est créé ailleurs.
+	\end{itemize}
+	Tu présumes également que cet artefact est indispensable pour pouvoir rentrer dans ton monde original, la Terre. Bien que tu ne l'as jamais utilisé de cette façon, tu as le sentiment de pouvoir l'activer rapidement une fois qu'il sera en ta possession...
+	
+	\paragraph{Informations au début de partie} Très rapidement après être arrivé au bal, tu remarqueras plusieurs choses grâce à tes pouvoirs:
+	\begin{itemize}
+		\item Le \textbf{Père Noël} a une "aura" complètement différente à ce que tu t'attendais du personnage. Notamment, l'aura que tu constates en ce moment est celui d'une personne violente et en colère, ce qui semble fondamentalement à l'encontre du personnage. Tu suspectes donc un imposteur, mais tu n'as aucune idée de ses buts
+		\item Tu n'as aucune idée d'où sort le \textbf{représentant du chapelier fou}, mais en tout cas, pas du pays des merveilles. En effet, son aura est très étrange, par rapport aux mondes de la confrérie.
+		\item Tu as senti la présence d'un passage spontané à l'arrière du château, dans un couloir très peu fréquenté et bien caché. Tu ignores où il donne, mais les occupants (et la confrérie) ne semblent pas être au courant de sa présence et ça te donne une option de fuite pour toi ou quelqu'un d'autre.
+	\end{itemize}
+	
+	\paragraph{Conseil de RP} Au niveau RP, je conseille vivement au joueur de parler comme s'il était le narrateur/trice de l'histoire, càd en faisant des descriptions à voix haute et en employant la troisième personne pour décrire ses pensées et communiquer lors de conversations (merci à Martin Bodin pour cette super idée, qu'il a utilisé la première fois que cette murder a été jouée).
+}
+
+
+%2) Hansel (conseil de la confrérie des rêves - politique/intriguant (Lannister) )
+\pageForPlayer{2}{Hansel}{
+	\item[Nom] Hansel
+	\item[Conte d'origine] Hansel et Gretel
+	\item[Stéréotype] Fondateur de la confrérie des rêves - politicien intriguant (Lannister)
+	\item[Objectif] Négocier le meilleur accord pour la confrérie avec Hyrule - créer un nouveau passage impliquant Hyrule - en général, agir dans le sens de la confrérie
+	\item[Atout majeur] Le poids politique de la confrérie - un réseau d'espionnage personnel pouvant monter une enquête dans tous les contes en contact avec la confrérie. Peut supprimer une rumeur (une fois par heure)
+	\item[Inconvénient majeur] Trempe dans des affaires louches
+	\item[Possessions] Tiers de médaillon (porte des rêves) + dague + 2 unités d'argent (fonds de corruption)
+	\item[Entraînement au combat] Très faible, mais la confrérie a 10 gardes d'élites
+}{
+	\paragraph{Histoire personnelle} Voilà 50 ans que tu es à la tête de la confrérie des rêves avec tes deux confrères, \emph{le Chasseur} et \emph{Prof}. Des trois fondateurs, tu t'occupes de la politique, c'est à dire de la diplomatie entre les contes et de l'espionnage/contre-espionnage pour mettre en place ou prévenir des complots. En comparaison, le Chasseur s'occupe du mercenariat et Prof du commerce.
+	
+	\par Depuis la fondation de la confrérie, tu t'es marié il y a une vingtaine d'année avec ton amie d'enfance \emph{Gretel}. Mis à part ça, ton temps a été quasiment complètement consacré à gérer la politique de la confrérie. Ainsi, tu possèdes un réseau d'informateurs assez conséquent qui te met au courant de la majorité des complots.
+	
+	\paragraph{Situation politique actuelle} Voilà un bilan des événements et informations dont tu es au courant ces derniers jours:
+	\begin{itemize}
+		\item Vous avez actuellement des difficultés économiques du fait d'attaques de rebelles ciblés sur certaines ressources. Ainsi, il y a 6 mois, vous avez créé un passage vers un nouveau conte contenant au minimum des ressources de bois, minerais et nourriture. Le passage que vous aviez créé a donné sur Hyrule. Le chasseur s'est arrangé pour que le passage soit découvert par l'une de ses équipes d'exploration un mois après et un premier contact a été établi avec leur dirigeante, la \emph{Reine Zelda}.
+		
+		\item Prof a été chargé d'obtenir ces trois ressources. Pour se faire, tu as conseillé que le Chasseur effectue un raid sur le château de Barbe Bleue pour piquer son trésor (une semaine avant le bal). Prof se retrouve donc avec 9 unités d'argents grâce à vos efforts, et il est prévu que vous achetiez ses ressources pour 3 unités d'argent chacune. Après, tu sais que Prof a tendance à vouloir faire de la marge sur son chiffre d'affaire, du coup tu lui laisses champs libre, du moment qu'il arrive à obtenir les-dites ressources.
+		
+		\item Le chasseur est très violent dans la manière dont il se comporte avec les menaces de conte. Tu sais que ça vient du fait que sa nièce et tante ont été tué par le loup dans son conte natal, et que c'est un sujet tabou le concernant.
+		
+		\item Une mouvance xénophobe envers les "nouveaux contes" (trop différents des "originaux") commence à se dessiner et à protester contre l'intégration de nouveaux contes dans la confrérie. Notamment, tu sais que ta femme \emph{Gretel} a ce genre de tendances (pour t'être fréquemment disputé avec cette dernières) et n'hésite pas à magouiller dans son coin contre les nouveaux arrivants.
+		
+		\item Dans les affaires récents, quelques "méchants de contes" semblent avoir récemment échappé à la surveillance des équipes du Chasseur. Tu n'as pas les noms précis en tête, mais il semble maîtriser la situation et prendre le problème au sérieux.
+		
+		\item Vos équipes d'exploration ont découvert l'existence d'un "méchant" nommé \emph{Ganon} présent dans ce conte. D'après les rapports que tu as eu, votre arrivée n'a pas dû passée inaperçue et il sera potentiellement possible de le contacter en milieu de bal (une fois qu'une liaison sera établie), ce qui peut constituer une alternative à Zelda si cette dernière est très réticente envers la confrérie
+		
+		\item Pas de nouvelles de la rébellion, mais ça te semble improbable qu'ils n'aient pas au moins un agent au bal (peut-être parmi les soldats).
+		
+		\item \emph{Garulfo} semble ambitieux, mais terriblement naïf dans ses convictions.
+		
+		\item Certaines personnalités semblent s'être décidé au dernier moment de venir, comme le \emph{Père Noël} et le \emph{Narrateur}. Ces deux personnalités sont des rares cas de personnages présents dans plusieurs contes et ayant des pouvoirs mystiques spéciaux (soit une forme de duplication ou contraction temporelle pour le Père Noël, et le Narrateur est plus une puissance ayant des légers pouvoirs de divination à propos des contes).
+		
+		\item Le \emph{Chat botté} est présent pour assister au bal. Il a ramené un de ses sous-fifres, le \emph{Petit poucet}, que tu n'as jamais vu, mais qu'il t'a vanté comme "prometteur".
+		
+		\item \emph{Belle} a réussi à se faire inviter, probablement en se servant de ses sympathisants. A ton avis, elle est surtout là pour faire échouer les négociations, mais tu ne peux pas officiellement l'expulser, l'enfermer (et encore moins l'assassiner) sans provoquer de gros remous politiques. Cependant, pour prévenir de cette situation, tu as réussi à déterrer un scandale sur sa personne, comme quoi elle aurait aimé un "méchant de conte" (nommé \emph{la Bête}). Ce dernier l'a kidnappé il y a quelques mois, et tu penses pouvoir potentiellement la décrédibilisée en la faisant passer pour une folle ayant un sérieux syndrôme de Stockholm.
+	\end{itemize}
+	
+	\paragraph{Négociation avec Hyrule - volet politique} Les trois débouchés les plus fréquents de ce genre de négociations sont:
+	\begin{itemize}
+		\item \textbf{Tutelle de la confrérie:} Hyrule devient vassal de la Confrérie, en échange de forts avantages commerciaux et militaires (solution adaptée notamment quand un conte ne peut pas se gérer lui-même pour cause d'économie déficiente ou de menace de conte trop importante)
+		\item \textbf{Relations commerciales:} Des échanges commerciaux "égaux" s'établissent entre Hyrule et la Confrérie. De plus, un certain quota (restreint) de personnes peuvent demander un Visa pour voyager à travers les contes.
+		\item \textbf{Pas de relations:} Hyrule refuse tout contact avec la Confrérie, les passages découverts sont gardés voire condamnés de chaque côté et nul ne peut y passer (que ce soit la Confrérie dans Hyrule ou Hyrule dans les autres contes). Tu veux essayer d'éviter à tout prix cette situation, vu que ça implique qu'aucune ressource ne pourra être échangée avec Hyrule sur le long terme, et que ça risque vouloir dire une crise.
+	\end{itemize}
+	Si l'une des deux premières solution est choisie, Prof va devoir négocier les termes exacts du contrat commercial. Dans tous les cas, le résultat de la négociation sera annoncé vers la fin de la soirée, et le document officiel sera signé quelques jours plus tard.
+}
+
+
+
+%3) Le Chasseur (conseil de la confrérie des rêves - sans pitié/militaire)
+\pageForPlayer{3}{Le Chasseur}{
+	\item[Nom] Le Chasseur
+	\item[Conte d'origine] Le Petit Chaperon Rouge
+	\item[Stéréotype] Fondateur de la confrérie des rêves - militaire/sans pitié
+	\item[Objectif] Lutter contre les "menaces de contes" - traquer la rébellion des méchants loups - en général, agir dans le sens de la confrérie
+	\item[Atout majeur] Tête des forces armées de la confrérie, bourrin à l'épée
+	\item[Inconvénient majeur] Peu subtil et rude.
+	\item[Possessions] Tiers de médaillon (porte des rêves) + épée
+	\item[Entraînement au combat] Très fort et dispose de 10 gardes d'élite.
+}{
+	\paragraph{Histoire personnelle} Voilà 50 ans que tu es à la tête de la confrérie, avec \emph{Hansel} et \emph{Prof}. Des trois fondateurs, tu t'occupes de la partie "musclée", c'est à dire de la surveillance des "menaces de contes", du mercenariat, des équipes d'explorations en cas de nouveaux passages découverts. En comparaison, Hansel s'occupe de la politique et de la diplomatie, et Prof du commerce et de l'économie.
+	
+	\par Il y a 50 ans, tu as perdu ta seule famille (ta nièce naïve aux goûts vestimentaires douteux et ta tante addict aux produits laitiers) lors de l'attaque du Loup, la menace principale de ton conte. Bien entendu, tu as réussi à le retrouver pour lui faire la peau, mais le mal était déjà fait. Peu après ces évènement, tu rencontras Hansel et Prof et, par la suite, la confrérie fut fondée.
+	
+	\par Depuis, tu as juré de tout faire pour que ta situation ne se reproduise plus et donc de lutter contre les menaces de conte (ce qui peut aller jusqu'à les tuer pour qu'ils laissent tranquille le peuple). Du coup, tes réactions peuvent être un peu précipités (et généralement peu subtil, mais tu peux te le permettre). Tu es également connu pour être à l'origine du nom de la rébellion "les grands méchants loups", que tu as nommé lors d'un accès de colère (dû à une nième traque infructueuse) parce qu'ils "aideraient les menaces des contes" (point largement repris par la propagande anti-rébellion de la confrérie).
+	
+	Ces derniers temps, tes principales occupations sont les suivantes:
+	\begin{itemize}
+		\item La rébellion se fait de plus en plus insistante depuis 10 ans. Du coup, tes hommes sont très occupés à prévenir les attaques armées, sabotages et autres agitations de "menaces de contes". Par exemple, il y a eu du grabuge il y a quelques mois dans de multiples contes qui ont provoqués une pénurie de ressources: des entrepôts de bois ont été brûlés et de entrepôts de minerais pillés.
+		
+		\item Il y a un peu plus d'une semaine, tu as eu un rapport de mouvements étranges au niveau du conte de \emph{Barbe bleue} (l'information émanant d'un des villageois locaux). Tu as donc effectué un raid préventif sur la demeure de ce dernier (tuant plusieurs de ses serviteurs\dots mais bon, c'était des dégâts collatéraux inévitables), et tu as mis la main sur sa fortune. Tu n'es pas tombé sur Barbe Bleue pendant le raid, et tu supposes qu'il a réussi à se trouver une autre cachette dans son conte (en échappant à la surveillance de la confrérie).
+		
+		\item On t'a signalé un peu d'agitation du côté du \emph{pays des Merveilles} il y a à peine deux jours, sans conséquence pour le moment\dots
+		
+		\item Concernant la soirée, tu es principalement là pour assurer la sécurité des membres de la confrérie, à l'aide de tes 10 gardes d'élite. Tu es conscient qu'ils ne feront pas le poids face à la centaine de soldats du château (contrôlés par Zelda), mais ils sont suffisamment bon pour faire une retraite stratégique avec la majorité des invités importants, en cas de pépin.
+		
+		\item La SPA (menée par \emph{Belle}) te tape violemment sur les nerfs. Non seulement ils prétendent que ces\dots monstres devraient avoir des droits, mais ils t'empoisonnent la vie dès que tu en touches un! Mais tu es sûr qu'elle ne se rend pas conte du danger qu'ils représentent. Ca doit probablement venir du fait que tu as mené un raid il y a quelques années contre \emph{la Bête} (suite à de nombreuses plaintes de villageois du conte en question et finalement un enlèvement). Tu as perdu quelques uns de tes meilleurs hommes dans l'opération (le mobilié enchanté était particulièrement vicieux) avant d'arriver à tuer la Bête en combat singulier (et justement sauver Belle). Du coup, tu la trouves particulièrement hypocrite. Seulement, Hansel t'a demandé de ne pas la toucher (du moins en public) sous peine de provoquer des remous politiques trop importants.
+	\end{itemize}
+}
+
+
+
+%4) Prof (conseil de la confrérie des rêves - marchand/a mauvaise conscience)
+\pageForPlayer{4}{Prof}{
+	\item[Nom] Prof
+	\item[Conte d'origine] Blanche-Neige et les 7 nains
+	\item[Stéréotype] Fondateur de la confrérie des rêves - marchand légèrement lâche
+	\item[Objectif] Obtenir les ressources pour la confrérie, puis gagner un maximum d'argent (pour se faire une marge personnelle)
+	\item[Atout majeur] Tête des forces commerciales de la confrérie
+	\item[Inconvénient majeur] Avare
+	\item[Possessions] Tiers de médaillon (porte des rêves), 9 unités d'argent (2 de la confrérie, 7 du raid sur Barbe Bleue).
+	\item[Ressources] A besoin de \emph{bois}, \emph{nourriture} et \emph{minerai}. Possède du \emph{textile}.
+	\item[Entraînement au combat] Très faible, mais la confrérie a 10 gardes d'élites
+}{
+	\paragraph{Histoire personnelle} Voilà 50 ans que tu es à la tête de la confrérie, avec \emph{Hansel} et \emph{le Chasseur}. Des trois fondateurs, tu t'occupes de la partie commerciale, c'est à dire de l'économie des contes liés à la confrérie et des échanges de ressources entre contes (moyennant une taxe raisonnable permettant de financer la Confrérie elle-même). En comparaison, Hansel s'occupe de la politique et de la diplomatie, et le Chasseur du mercenariat et de la gestion des menaces.
+	
+	\par Tu voyages beaucoup pour ton travail et, vu le nombre d'opportunités se présentant, tu voyages souvent séparément de ton assistant principale, le \emph{Chat Botté}, qui s'occupe essentiellement d'évaluer l'état des marchés pour que vous puissiez intervenir avec un contrat commercial bien placé. Ce dernier a récemment recruté un assistant, le \emph{Petit Poucet} qui, d'après lui, est très prometteur.
+	
+	\par Actuellement, la confrérie manque de \emph{bois}, \emph{nourriture} et \emph{minerai}, suite à des attaques de la rébellion il y a plusieurs mois, qui ont brûlé un entrepôt de bois et volé du minerais. Ainsi, il y a 6 mois, vous avez créé un passage vers Hyrule, que vous savez contient ces ressources. Afin de les obtenir, Hansel proposa au Chasseur de piler les coffres de Barbe Bleue afin d'avoir suffisamment de fonds.
+	
+	\par Le plan initial est de proposer 3 unités d'argent pour chaque ressources, afin de s'assurer une alliance et s'établir comme un bon partenaire commercial vis à vis d'Hyrule. Après, tu comptes, disons, "adapter" le plan et essayer de te faire un maximum de marge. Le plus d'argent tu obtiens à la fin, le plus de marge personnelle tu as, et tu espères pouvoir te payer une villa (si tu arrives à finir avec 4 unités d'argent). Si tu arrives à finir les négociations avec 8 unités d'argent, tu es certain que tu peux prendre une retraite plus que confortable dans un des contes les plus ensoleillés et paradisiaques de la confrérie.
+	
+	\par Hansel sait (parce que c'est Hansel) que tu vas probablement adapter le plan, et t'a averti clairement que tu as intérêt à obtenir ces ressources ou sinon il ne va pas être content (et tu sais très bien que les gens envers qui Hansel n'est pas content ont tendance à avoir une vie très courte). Au pire du pire, tu penses pouvoir trouver ces ressources sur le marché noir de la confrérie au prix fort (4 pièces d'or par tour).
+	
+	\par Concernant ta ressource de textile, tu aimerais bien t'en débarrasser à bon prix, mais il te faudrait trouver un acheteur d'abord\dots
+}
+
+
+
+%5) Gretel (femme d'Hansel - xénophobie envers les contes trop éloignés qui "dénaturent" la culture - mondaine/intriguante)
+\pageForPlayer{5}{Gretel}{
+	\item[Nom] Gretel
+	\item[Conte d'origine] Hansel et Gretel
+	\item[Stéréotype] Épouse d'un fondateur de la confrérie - courtisane intrigante (option ragots) - xénophobe
+	\item[Objectif] Soit se débrouiller pour qu'Hyrule se retrouve "esclave de la confrérie" (c'est à dire en tutelle), et de manière générale rendre la vie très dure aux nouveaux contes (le tout sans se faire griller par son mari Hansel)
+	\item[Atout majeur] Réseau de courtisanes (peut ajouter des rumeurs discrètement - peut demander à être avertie immédiatement si une rumeur concerne un sujet spécifique)
+	\item[Inconvénient majeur] Xénophobe convaincue (et n'en démordra pas)
+	\item[Possessions] Une supeeeeerbe robe de soirée... et 2 unités d'argent (venant de ses fonds personnels et de généreux donateurs xénophobes)
+	\item[Entraînement au combat] Très faible
+}{
+
+
+	\paragraph{Histoire personnelle} Voilà un peu moins de 50 ans que tu es marié à ton ami d'enfance, \emph{Hansel}. Bien que tu n'y connaissait pas grand chose à la politique, tu as rapidement pris goût et est devenue compétente. Au point où Hansel te charge de temps à autre d'assister à des réceptions diplomatiques à sa place quand ce dernier est trop occupé. Ainsi, tu connais bien les rouages internes de la confrérie. Contrairement à Hansel qui s'intéresse plus à la diplomatie, tu t'es concentré sur la confrérie elle-même pour te créer des alliés politiques à travers les nombreuses réceptions/bals donnés à travers les contes.
+	
+	\par Depuis environ 15 ans, tu trouves que les nouveaux contes découverts sont de plus en plus bizarres comparés aux contes "originaux". Notamment, tu as le sentiment que ces derniers ne devraient pas s'appeler "contes" et devraient pas avoir le même statut dans la confrérie que les contes originaux. Ce sentiment s'est renforcé au fil des années, et est également présent chez une large partie de l'auto-proclamée "noblesse" des contes (les dirigeants des contes originaux).
+	
+	\par Pour le moment, vous vous servez de vos influences pour rendre subtilement la vie dure aux "nouveaux" de la Confrérie, notamment en sabotant leur intégration pour les forcer à opter pour un choix largement en faveur pour la confrérie, à travers des ragots, rumeurs, sabotage de relations commerciales. Tu comptes justement faire de même ce soir à propos de l'intégration d'Hyrule dans la confrérie.
+	
+	\par Ton mari n'est absolument pas d'accord avec toi et vous vous êtes pris le bec de nombreuses soirées sur ce sujet. Étant au cœur de la confrérie, tu as remarqué qu'étrangement chaque nouvelle connexion découverte arrangeait la confrérie. Du coup, tu suspectes que Hansel n'a pas une main dedans, même si tu n'as aucune idée du moyen utilisé, et encore moins de preuve\dots
+	
+	\par Au fil des années, tu as réussi à te créer un réseau de courtisanes. Ce réseau te permet de faire circuler discrètement des informations (max 1 toutes les heures) et de t'avertir dès qu'une rumeur concernant un sujet précis commence à circuler.
+	
+	\par De plus, tu sais que \emph{Garulfo} cherche ces derniers temps à monter en grade dans la confrérie, tout en étant relativement naïf. Tu penses donc pouvoir l'utiliser, la question étant comment\dots
+}
+
+
+
+%6) Garulfo (récent arrivant dans la confrérie des rêves - naïf, pense que le système est bon, même si pas parfait - essaye de monter dans la confrérie histoire d'arranger ça)
+\pageForPlayer{6}{Garulfo}{
+	\item[Nom] Garulfo
+	\item[Conte d'origine] Royaume de la grenouille et du dragon
+	\item[Stéréotype] Récent arrivant dans la confrérie - idéaliste - ambitieux
+	\item[Objectif] Améliorer le mode de fonctionnement de la confrérie - monter en grade dans la confrérie (pour être mieux placé pour accomplir le premier objectif)
+	\item[Atout majeur] Particulièrement ouvert d'esprit - Parle aux animaux (réseau privé d'informateurs)
+	\item[Inconvénient majeur] Un poil trop idéaliste
+	\item[Possessions] Un optimisme à tout épreuve - une dague - 3 unités d'argent
+	\item[Ressources] Possède de la \emph{nourriture}. A établi un pré-accord avec le pays des merveilles visant à récupérer du \emph{bois} contre 2 unités d'argent.
+	\item[Entraînement au combat] Bon
+}{
+	\paragraph{Histoire personnelle} Au début de ta vie, tu étais une grenouille. Tu vivais tranquillement dans ta mare avec ton meilleur ami Flubert (un canard de la plus belle espèce), mais tu t'ennuyais à mort... Jusqu'au jour où tu décidas de passer un contrat avec une fée, qui te lança un sort pour que tu prennes une apparence humaine dès qu'une princesse t'embrassera. Suite à une série d'événements plus ou moins compliqués (une histoire de dragon, mais bon on va pas rentrer dans les détails) tu es arrivé à la tête de ton royaume. Ton règne fut majoritairement l'occasion de tester de nombreuses utopies, donnant le meilleur de toi même et cherchant à trouver le meilleur fonctionnement social. Il est à noté que tu as gardé ta capacité grenouillesque à communiquer avec les animaux\dots
+	
+	\par Il y a 6 ans, tu as été contacté par des éclaireurs d'une certaine "Confrérie des rêves". Ces derniers ont découvert un passage magique reliant ton royaume à d'autres "contes" (de ce que tu as compris, un endroit tellement loin qu'on ne peut pas y aller à pied). Après quelques discussions avec leur dirigeant, tu as négocié ton intégration dans la confrérie, contre quelques accords commerciaux bien placés, de nombreux échanges d'écrits (histoire de renouveler ta bibliothèque) et un stock inépuisable de partenaire de conversation (près à s'emporter avec toi dans des discussions philosophiques poussées, comme c'est le cas notamment du \emph{Chat Botté}) ou d'adversaires contre qui t'entraîner aux armes. Ton conte a donc fini par s'intégrer à la confrérie il y a 5 ans.
+	
+	\par A travers tes discussions, tu t'es rendu compte que la confrérie n'était pas forcément le meilleur système qui soit. Notamment, ses fondateurs centralisent les pouvoirs et ne laissent que très peu de marge de manœuvre aux contes. De plus, certains incidents se sont déjà produit (comme ce fut le cas de l'accident de Cendrillon, apparemment causé par accident par la confrérie et non assumé pour des raisons "politiques" qui t'échappent). Ton opinion actuelle sur le sujet est qu'un équivalent de la confrérie reste tout de même nécessaire (notamment tu salues leur effort de préservation de la culture et des niveaux technologiques de chaque contes), mais que plusieurs améliorations du système seraient la bienvenue.
+	
+	\par Ainsi, tu t'es fixé comme but de monter en grade dans la confrérie par la force de tes idées et de ta motivation, dans l'espoir d'en prendre la tête un jour et de changer les choses pour le bien de tous.
+	
+	\par Du fait de tes origines, tu peux communiquer avec les animaux (fait non connu de la confrérie). Par exemple, il y a des souris et des chouettes au château d'Hyrule, entre autres. Les animaux étant simple par nature, ils ne mentent pas, mais les informations qu'ils peuvent te rapporter peuvent être déformées par leur point de vue (notamment, les animaux ne comprennent généralement absolument pas les affaires humaines). De plus, ils ne se mettent volontairement pas en danger, ni eux, ni leur proche. Ces animaux peuvent faire également d'autres tâches simples (comme surveiller un lieu, \dots). L'inconvénient est que tes animaux ne s'aventureront pas loin pour récupérer des informations.
+	
+	\par Au dernier grand rassemblement de la confrérie, tu as réussi à pré-négocier un accord avec le Chapelier Fou afin d'obtenir du bois (vu que tu ne vas pas couper tes forêts, vu que c'est là où tes amis habitent) contre 2 unités d'argent. Tu n'avais pas de liquide sur toi à ce moment, du coup vous avez repoussé l'échange à ce bal. Parmi les 3 unités d'argent que tu possèdes, il y en ainsi 2 de destiné au Chapelier Fou (une fois le bordereau déposé).
+	
+	\par Enfin, le passage découvert menant à Hyrule communique directement avec ton conte. Tu veux donc en apprendre plus sur ton voisin et voire si tu peux établir des relations commerciales intéressantes sur une plus longue durée (tu sais que tu auras d'ici quelques mois au minimum des stocks de \emph{nourriture}, du fait de la production optimisée de tes fermes).
+}
+
+
+%7) Le représentant du Chapelier fou [Black Hat (xkcd)] (troll en puissance - contrebande de matériel venant de l'extérieur (explosifs) )
+\pageForPlayer{7}{Black~Hat}{
+	\item[Nom officiel] Le représentant du Chapelier fou
+	\item[Identité secrète] Black Hat (xkcd)
+	\item[Conte d'origine] Officiellement, le pays des merveilles. Officieusement, un endroit bizarre nommé "xkcd".
+	\item[Stéréotype] Troll en puissance disposant d'un fournisseur d'artefacts détonants
+	\item[Objectif] Mettre le bordel, de la façon la plus trollesque possible
+	\item[Atout majeur] Passage découvert à l'arrière du château - Femme pouvant lui faire passer des artefacts magiques pour provoquer le chaos
+	\item[Inconvénient majeur] Aucune idée de la situation politique actuelle - ne connaît personne
+	\item[Possessions] Un téléphone portable
+	\item[Entraînement au combat] Très faible
+}{
+	\paragraph{HRP} Je conseille la lecture des xkcd 1776 (Reindeer), 1777 (Dear Diary), 515 (No one must know) et des 5 "Journals" (374, 377, 405, 432 et 433) pour avoir une idée du personnage.
+	
+	\paragraph{Histoire personnelle} Toi et ta femme (\emph{Danish}) venez d'un "endroit" bizarre, que tu supposes être une dimension parallèle. Un jour, alors que tu te promenais avec ta femme (qui t'égalise au niveau trollitude) à tapisser le grand canyon de portails (avec un portal-gun que vous avez... euh... "trouvé" quelque part), la réalité du coin en a eu marre de se faire autant malmener et vous a expulsé dans une dimension connexe.
+	
+	\par Vous vous êtes donc retrouvé au milieu d'un labyrinthe végétal (que vous vous êtes empressé de désherber en ligne droite) peuplé de cartes géantes (que vous avez menacé, en brandissant un jeu de coinche, de miniaturiser). Suite à divers événements impliquant notamment une histoire de drogue (option léchage de papillon saturé à l'opium), d'expérience de physique quantique utilisant un chat errant et d'utilisations non conventionnelles des potions d'agrandissement pour couler définitivement l'industrie locale de viagra (fallait pas vous spammer), vous avez fini par kidnapper le \emph{Chapelier fou} pour mettre la main sur sa (gigantesque) réserve de thé...
+	
+	\par Après l'avoir torturé un peu (en lui faisant boire du café trop salé et du thé au poivre), vous avez appris que vous étiez dans un "conte" appelé le \emph{Pays des merveilles}. De plus, ce conte était relié à plein d'autre, et une organisation nommée la \emph{Confrérie des rêves} contrôle l'utilisation des passages entre les mondes. Notamment, une réception va se tenir dans un conte voisin, nommé \emph{Hyrule}, réunissant tous ses membres importants.
+	
+	\par Après quelques recherches, vous êtes tombé complètement par hasard sur un passage donnant à l'arrière du palais d'Hyrule. Ainsi, tu es parti pour t'infiltrer dans la soirée, sous couvert d'être le \emph{représentant du Chapelier fou}, intéressé par Hyrule en tant que royaume voisin. Seul problème: tu ignores qui est qui... mais bon, tu improviseras bien quelque chose sur place. Pendant ce temps, Danish reste en stand-by pour à la fois surveiller le Chapelier fou pendant la soirée, et pour te filer du matériel nécessaire pour perturber la soirée (notamment des artefacts récupérables dans les contes voisins) à travers le passage découvert.
+	
+	Au niveau des communications, tu communiques par téléphone portable avec Danish (ces derniers semblent fonctionner entre des contes connexes, et tu t'es arrangé pour ne pas payer la facture). Ce dernier détonne un peu par rapport au niveau technologique du coin du coup il va falloir être discret avec\dots
+	
+	\paragraph{Liste des artefacts repérés et potentiellement récupérables (potentiellement négociable):}
+	\begin{itemize}
+		\item Un sabre-laser (arme - épée)
+		\item Une pomme empoisonnée (arme - nourriture - poison)
+		\item Une cape d'invisibilité (utilitaire)
+		\item \dots
+	\end{itemize}
+}
+
+% Note: aura 2 argents et du bois une fois le contact fait avec Danish. Cherche du textile.
+
+
+
+%8) Le chat botté (leader de la rébellion des grands méchants loups - visionnaire fourbe)
+\pageForPlayer{8}{Le chat botté}{
+	\item[Nom] Le chat botté
+	\item[Conte d'origine] Le chat botté
+	\item[Stéréotype] Leader de la rébellion "des grands méchants loups" - Révolutionnaire fourbe
+	\item[Objectif] (A terme) Mettre à bas la confrérie - Convaincre Hyrule de rejoindre la rébellion
+	\item[Atout majeur] Infiltré dans la confrérie - organisation secrète derrière lui - Allié sûr: \emph{Petit-poucet}
+	\item[Inconvénient majeur] Ne doit surtout pas être découvert
+	\item[Possessions] Une dague (passée à travers la sécurité grâce à la rébellion) - 2 unités d'argent
+	\item[Ressources] Possède du \emph{minerai} (pillé des entrepôts de la confrérie, il n'est pas sensé en avoir et donc ne doit pas se faire prendre par la confrérie) et du \emph{textile}. Recherche de la \emph{nourriture} pour nourrir ses troupes.
+	\item[Entraînement au combat] Fort
+}{
+	\paragraph{Histoire personnelle} Ton conte est membre de la confrérie depuis voilà près de 45 ans, alors fraîchement fondée par \emph{Hansel}, \emph{Le chasseur} et \emph{Prof}. Au début, ça t'a semblé une bonne idée, l'organisation était naissante et les avantages commerciaux intéressants, mais tu as déchanté petit à petit quand tu as vu que la confrérie profitait énormément de son monopole pour avoir une grande influence (politique, militaire (sous couvert de "chasser les menaces de contes" et économique) sur ses membres.
+	
+	\par Il y a 30 ans, tu as donc fondé en toute discrétion un mouvement clandestin de lutte contre l'influence de la confrérie. Vous proposiez à la base des services de contrebandes (en utilisant des passages non encore découverts par la confrérie) et de mercenariat (pour éviter la présence des forces de la confrérie dans le territoire). Au niveau du dernier point, vous aviez été surpris de constater qu'un bon nombre de soi-disant "menaces de contes" vous ont rejoint de plein grès, las d'être martyrisés par la confrérie. Ces derniers vous ont fournis la force militaire qui vous était nécessaire pour perdurer, mais vous as coûté un surnom (qui vous a été donné par \emph{le Chasseur} après une traque sans succès à votre encontre) de "rébellion du grand méchant loup".
+	
+	\par À propos des menaces de contes, tu sais que certains sont dangereux et irrémédiables, mais, pour avoir travailler avec certains, tu penses que l'environnement qui leur était offert par leur conte d'origine est en grande partie responsable de leur comportement criminel. Ainsi, tu penses qu'une meilleure solution serait de leur proposer un contact extérieur à leur conte qui leur offre une alternative respectable à leur position actuelle (typiquement, pour un loup des bois, la gestion d'un élevage de lapins: leur appétit peut contrebalancer les explosions de population). L'existence même de la rébellion est la preuve même qu'une telle solution marche, vu que tu n'as pour le moment eu aucun problème de la part des menaces de conte recrutées, une fois la sélection en entrée effectuée.
+	
+	\par Il y a 20 ans, les 3 fondateurs de la confrérie t'ont recruté comme "conseiller socio-économique", chargeant toi et tes subordonnés de mesurer l'état des contes membres de la confrérie et de leur fournir des rapports mensuels. Cela t'a donné une bonne raison de bouger constamment entre les contes et d'implanter la rébellion un peu partout.
+	
+	\par Il y a 10 ans, l'incident de Cendrillon se produisit et tu as eu la preuve flagrante de l'incompétence et de la dangerosité de la Confrérie. Cette dernière étant plutôt bien implantée dans quasiment tous les contes, vous vous êtes tournés vers le sabotage des installations de la confrérie et la propagande un peu plus active. De ton côté, tu as remarqué une relation étrange entre les rapports que tu fournissais et les contes découverts quelques mois après: quasi-systématiquement, le monde découvert arrange la confrérie que ce soit à cause d'une ressource, de la présence d'un certain type de compétence ou de sa position "géographique" entre différents contes (qui finit par renforcer les réseaux commerciaux, comme parfois suggéré dans tes rapports). Du coup, tu soupçonnes fortement la confrérie d'avoir un moyen de créer des passages, et de s'en servir au moins depuis les 20 dernières années.
+	
+	\par Ce soir, tu as plusieurs objectifs:
+	\begin{itemize}
+		\item Indépendamment d'Hyrule, prendre contact indirectement (peut-être via le Petit Poucet?) avec \emph{Belle}, fondatrice de la \emph{Société Protectrice des Antagonistes}, dont les buts sont en grande partie communs avec la rébellion, mais dont les moyens diffèrents. Vous comptez négocier afin de voir si vous pouvez renforcer vos deux organisations.
+		
+		\item Tu as compris que \emph{Zelda}, la dirigeante du royaume d'Hyrule, n'a eu qu'un minimum d'informations sur le monde qui l'entoure, et probablement une vision déformée de la confrérie. Il te semble nécessaire de la mettre subtilement au courant (notamment des dérives de la confrérie) afin qu'elle n'accepte pas sans réfléchir un accord avec cette dernière.
+		
+		\item Notamment, Hyrule possède les ressources (\emph{bois} et \emph{minerais}) que vous avez justement fait exprès de viser ces derniers mois pour créer une pénurie chez la confrérie et la déstabiliser. Du coup, ça t'arrangerait que cet accord ne se fasse pas.
+		
+		\item Si l'occasion se présente, il serait bien de négocier la participation d'Hyrule dans la rébellion contre les services de cette dernière. C'est à négocier, et encore une fois tu comptes potentiellement faire passer ça via le Petit Poucet.
+		
+	\end{itemize}
+	
+	\par Tu connais plutôt bien \emph{Garulfo}, un membre récent de la confrérie et tu as pu discuter longuement avec lui de sujets divers allant de philosophie à économie en passant par les sciences. Tu ne lui as pas révélé ton appartenance à la rébellion, mais tu sais que ce dernier espère monter en grade dans la confrérie pour améliorer le système. Tu ne peux que louer ses efforts, mais tu penses que ce système ne peut de base pas bien fonctionner à cause du trop grand pouvoir donné par le monopole.
+	
+	\par Tu as à ton service \emph{le Petit Poucet} qui te sert de fidèle bras droit de la rébellion et (jusqu'à récemment) d'agent de terrain. Aux yeux de la confrérie, il s'agit de ton assistant personnel (dont tu as vanté les compétences). Sur un autre plan politique, il s'est secrètement dévoilé à \emph{Belle} comme étant membre de la rébellion et sert actuellement de contact entre la rébellion et la Société Protectrice des Antagonistes. Tu n'as aucun doute sur la loyauté du Petit Poucet, tout comme ce dernier n'a aucun doute sur la tienne.
+	
+	\par Le \emph{Petit Poucet} a également réussi à infiltrer 2 gardes de la rébellion dans les 10 gardes d'élites du Chasseur, près à se retourner si l'ordre est donné (signal et action précise à déterminer pendant la soirée).
+	
+	\par \textbf{HRP:} Le petit poucet est le seul joueur à qui tu peux monter ta fiche de perso (discrètement !!!) au cours de la partie. Il peut faire de même avec toi.
+}
+
+
+%9) Petit-poucet (membre de la rébellion, contact de Belle)
+\pageForPlayer{9}{Le Petit Poucet}{
+	\item[Nom] Le Petit Poucet
+	\item[Conte d'origine] Le petit poucet
+	\item[Stéréotype] Sous-chef de la rébellion - contact de la SPA - bras droit du \emph{Chat botté}
+	\item[Objectif] (A terme) Mettre à bas la confrérie - Faire survivre le Chat Botté à tout prix - Aider le Chat botté dans son entreprise
+	\item[Atout majeur] Infiltré dans la confrérie - discret, mais au milieu de tout - Modification de rumeurs - Allié sûr: \emph{Chat botté}
+	\item[Inconvénient majeur] Ne prend pas les décisions
+	\item[Possessions] Une dague (passée à travers la sécurité grâce à la rébellion)
+	\item[Entraînement au combat] Bon (équivalent à un soldat d'élite)
+}{
+	\paragraph{Histoire personnelle} Tu es membre de la confrérie depuis une quarantaine d'année, puis de la rébellion depuis une vingtaine d'année, sous les ordres directs du leader de la rébellion, le \emph{Chat Botté}. Des années de collaboration ont fait que vous vous connaissez très bien tous les deux et vous vous entre-saviez digne de confiance.
+	
+	\par Le Chat botté a réussi à se faire recruté comme "conseiller socio-économique" par la confrérie il y a 20 ans, lui permettant de bouger librement entre les contes, et d'implanter la rébellion à divers endroits (dont dans ton conte). Vu qu'il est une personne très importante de la confrérie ayant un poids politique considérable, il passe majoritairement par toi pour agir, construire, consolider, voire mener des opérations (tandis qu'il s'occupe plutôt de récolter des informations, préparer le terrain politique subtilement, monter des complots...). Depuis 10 ans, la rébellion est beaucoup plus active et commence à saboter activement les installations de la confrérie, lancer des embuscades et faire du contre-bandage.
+	
+	\par À propos des menaces de contes, tu sais que certains sont dangereux et irrémédiables, mais, pour avoir travailler avec certains, tu penses que l'environnement qui leur était offert par leur conte d'origine est en grande partie responsable de leur comportement criminel. Ainsi, tu penses qu'une meilleure solution serait de leur proposer un contact extérieur à leur conte qui leur offre une alternative respectable à leur position actuelle (typiquement, pour un loup des bois, la gestion d'un élevage de lapins: leur appétit peut contrebalancer les explosions de population). L'existence même de la rébellion est la preuve même qu'une telle solution marche, vu que tu n'as pour le moment eu aucun problème de la part des menaces de conte recrutées, une fois la sélection en entrée effectuée.
+	
+	\par Récemment, vous avez eu vent de la découverte d'Hyrule, un conte possédant des ressources que la rébellion s'est efforcé à en bloquer l'accès à la confrérie. Afin de ne pas jeter à l'eau votre dur travail de sabotage des derniers mois, vous avez pris plusieurs mesures, dont le fait de t'officialiser comme assistant personnel du Chat Botté (ce dernier aurait même vanté tes compétences). Tu as également réussi à infiltrer 2 hommes de la rébellion dans les 10 hommes d'élite pris par le Chasseur. Ces derniers sont près à agir à votre signal, mais ce dernier reste à être fixé, ainsi que l'action qu'il déclenchera (signe et actions à décider pendant le Bal).
+	
+	\par Sur un autre plan, vous avez eu vent de la \emph{Société Protectrice des Antagonistes} fondée par \emph{Belle} et ayant un poids politique conséquent. Vu que ses objectifs avec la rébellion sont relativement communs, le chat botté a pris contact avec elle à travers toi, et vous pensez monter une alliance de principe entre vos deux organisations (tu considère la SPA comme une possible version "politisée" de la rébellion, mais il existe peut-être de légères différences idéologiques à découvrir).
+	
+	\par Tu apprécies moyennement les gens de la confrérie, surtout \emph{le Chasseur}, contre qui tu t'es frotté de nombreuse reprise par traque/organisation de sabotage interposés. Ce sentiment est généralement partagé par tes hommes (une bonne partie d'entre eux étant des soi-disants "menaces de contes").
+	
+	\par Tes expériences d'espion t'ont permis de savoir comment les rumeurs circulent et de les manipuler. Tu ne peux pas en créer ou en supprimer, mais tu peux potentiellement investir du temps (5 minutes, en étant isolé) pour changer jusqu'à 3 mots d'une rumeur (noms des personnages exclus).
+	
+	\par En début de soirée, tu vas reconnaître le soi-disant \emph{Père Noël} comme étant \emph{Barbe bleu}, une "menace de conte" dont le refuge a été pillé par \emph{le Chasseur} pour tu ignores quelle raison (mais tu suspectes qu'il s'ennuyait et voulait un peu d'actions). Bien que Barbe bleue fait partie des personnes les plus fortes que tu connais, tu penses qu'il n'a aucune chance de survivre à une attaque frontale contre le chasseur et ses 10 hommes d'élite. Du coup, il va te falloir le raisonner en début de soirée avant que l'irréparable se produise et décider de la marche à suivre par la suite.
+	
+	\par \textbf{HRP:} Le chat botté est le seul joueur à qui tu peux monter ta fiche de perso (discrètement !!!) au cours de la partie. Il peut faire de même avec toi.
+}
+
+
+
+%10) Le père Noël [Barbe bleue] (bourrin planqué cherchant à se venger du commanditaire du pillage de son conte par la confrérie)
+\pageForPlayer{10}{Barbe bleue}{
+	\item[Nom officiel] Le père Noël
+	\item[Identité secrète] Barbe bleu
+	\item[Conte d'origine] Barbe bleu
+	\item[Stéréotype] Bourrin planqué cherchant à se venger du commanditaire du pillage de son conte par la confrérie
+	\item[Objectif] Se venger - Infliger le plus de dégâts à la confrérie - à la limite, survivre
+	\item[Atout majeur] Liens avec la rébellion - Une force de combat sur-humaine
+	\item[Inconvénient majeur] Couverture douteuse - tempérament (très) impulsif
+	\item[Possessions] Nada (à cause de la sécurité)
+	\item[Entraînement au combat] Très fort. Officiellement, très faible.
+}{
+	\paragraph{Histoire personnelle} Tu es, ce qu'on appelle un "antagoniste" de conte (ou une "menace de conte", dixit la confrérie). Pourtant, tu n'es jamais "délibérément méchant" et tu ne projette absolument pas d'envahir les contes. Juste que tu as été très malchanceux dans ta vie amoureuse (ta fortune attirant de vraies garces et d'autres qui venaient là juste pour fouiner) et que tu as tendance à avoir des réactions parfois un peu trop excessives (comme les égorger quand elles te tapaient trop sur le système).
+	
+	\par Il y a une trentaine d'années la confrérie est arrivée dans ton conte, et les villageois du coin ont apparemment accepté un accord commercial. Cependant, tu as appris après coup qu'une clause de ce contrat stipulait que des mercenaires de la confrérie te surveillent constamment (soi-disant pour éviter que tu partes tuer toutes les femmes de ton village). Au début, cette surveillance restait acceptable, mais, au fil des années, elle se durcit, jusqu'à presque t'interdire de sortir de chez toi sans donner de bonne raison donnée au préalable.
+	
+	\par Néanmoins, la rébellion a réussi à te contacter par l'intermédiaire du \emph{Petit Poucet}. Ces derniers t'ont convaincu de les rejoindre (ils semblaient avoir besoin de forces armées pour combattre les hommes de la confrérie, et vu ta condition d'ogre à force surhumaine), contre des extractions régulières de ton conte (pendant lesquelles tu peux respirer un coup). Les dix dernières années, tu as pu donc mener de nombreuses actions musclées (d'embuscade, de sabotage, \dots) au nom de la rébellion, sans que la confrérie se rende compte de tes disparitions périodiques.
+	
+	\par Il y a environ une semaine, en rentrant d'une n-ième mission, tu as trouvé ton château quasiment complètement détruit, ton coffre vidé et le cadavre de ta femme actuelle (qui, certes, était un peu dépensière, mais qui avait tenu un an!). Tu n'as pas trouvé trace de tes surveillants et les quelques informations glanées dans le village voisin indiquent un raid de la confrérie. Tu es donc rentré dans une fureur folle.
+	
+	\par Après avoir démoli à moitié le village et fuit les renforts de la confrérie qui commençaient à se rappliquer, tu as réussi à rejoindre une cache de la rébellion (actuellement désertée). En entendant parlé de la réception se tenant à \emph{Hyrule}, tu t'es teint la barbe et tu as récupéré un déguisement pour te faire passer pour le \emph{Père Noël} (une personnalité multi-conte généralement peu intéressée par la politique)
+	
+	\par Ton but est donc de te venger de la confrérie, surtout de celui qui a commandité l'opération de destruction de ton château. Vu que tu es techniquement à la rue, ça ne te dérange limite pas si tu ne survis pas, du moment que le commanditaire en question meurt avec toi.
+	
+	\par \textbf{HRP:} Vu que la mort de ce personnage est très probable, un personnage de remplacement (à décider par le MJ) sera fournis en milieu de partie, si le joueur veut continuer à jouer.
+}
+
+
+%11) Zelda (prétendante à l'intégration de son conte à la confrérie - lointaine contrée très récemment reliée - inconnue politique)
+\pageForPlayer{11}{Zelda}{
+	\item[Nom] Zelda
+	\item[Conte d'origine] Hyrule
+	\item[Stéréotype] Prétendante à l'intégration de la Confrérie des rêves - politiquement inconnue
+	\item[Objectif] Arriver au "meilleur" accord possible, au minimum un qui te permettra de te défendre contre Ganon si besoin est.
+	\item[Atout majeur] Est chez elle - Contrôle la garde du château (permet de lancer des enquêtes dans Hyrule)
+	\item[Inconvénient majeur] Des grosses lacunes concernant la politique multi-conte
+	\item[Possessions] Un ocarina (invoque \emph{Link}, garde du corps très fort qui peut la mettre en sécurité très rapidement) - une dague - 1 unité d'argent (ses coffres sont à sec)
+	\item[Ressources] Possède du \emph{bois}, du \emph{minerai} et de la \emph{nourriture}, mais n'a pas forcément envie de se séparer des deux dernières.
+	\item[Entraînement au combat] Bon - Link (très fort) - Garde du château (100 soldats "bon")
+}{
+	\paragraph{Histoire personnelle} Tu es la reine d'Hyrule depuis de nombreuses années, aux côtés de ton fidèle \emph{Link}, le héros qui a sauvé de nombreuses fois le royaume. La plus part des crises ont été causées par \emph{Ganondolf}, un sorcier immortel, chef du peuple du désert (un pays voisin belliqueux dont le climat est dur) et se réincarnant régulièrement entre diverses tentatives d'invasion d'Hyrule.
+	
+	\par Il y a quelques mois, des hommes se sont présentés à toi et ont prétendu venir d'un autre "conte" par un passage magique. Ces derniers seraient des éclaireurs de la \emph{Confrérie des rêves}, une organisation multi-conte chargée de gérer les communications entre contes (notamment pour préserver leurs cultures uniques, gérer leur rapports diplomatiques ou commerciaux et pour proposer une aide militaire pour lutter contre les "menaces de contes"). Après quelques discussion préliminaires, une date de rencontre avec les dirigeants de la confrérie a été décidée, et tu en as profité pour annoncer un bal et inviter "toute personnalité importante des contes".
+	
+	\par Actuellement, tu ne sais que penser de la confrérie. Leur offre estt alléchante, mais ces derniers constituent pour le moment ta seule source d'information. Ainsi tu aimerais pouvoir confirmer leurs informations et leur intentions, et tu veux profiter du bal pour avoir d'autres versions de leur histoire.
+	
+	\par Au niveau des négociations avec la confrérie, de ce qu'on t'a raconté, il y a trois grandes catégories d'accords possibles:
+	\begin{itemize}
+		\item Pas de relations avec la confrérie: la confrérie ne s'impliquera pas dans Hyrule, et Hyrule n'aura pas accès aux autres contes
+		\item Relations commerciales avec la confrérie (et quelques personnes importantes seront autorisées à voyager entre les contes)
+		\item Tutelle de la confrérie: Hyrule devient vassale de la confrérie, conférant un maximum d'avantage commerciaux, ou une présence militaire renforcée pour gérer une menace de conte (du fait qu'elle devient un des quartiers généraux de la confrérie).
+	\end{itemize}
+	Dans tous les cas, l'accord politique définitif sera signé dans quelques jours, ce qui te laisse l'opportunité de changer d'opinion, voire de renégocier les termes de l'accord pendant la soirée. Les accords commerciaux peuvent par contre s'effectuer pendant la soirée.
+	
+	\par Vu que tu es chez toi, tu as libre contrôle du planning de la soirée, du moment que ça reste raisonnable. Ainsi, tu peux décider quand placer les négociations entre les différents invités. De plus, tu contrôles les gardes du château (qui sont une bonne centaine, mais pas d'un excellent niveau) qui sont chargés de la sécurité des membres de la soirée. Pour ta protection personnelle, tu peux utiliser ton ocarina pour téléporter \emph{Link} à tes côtés, qui te protègera contre toute attaque sans réfléchir, puis qui vous re-téléportera en lieu sûr.
+	
+	\par La confrérie a exigé d'avoir une petite force armée, afin d'assurer la protection de leur dirigeants. Ainsi, tu as dû accepter 10 soldats d'élite contrôlés par \emph{Le Chasseur} (le chef militaire de la confrérie), \emph{Hansel} et \emph{Prof}.
+	
+	\par Tu as certains de tes éclaireurs qui surveillent l'incarnation actuelle de \emph{Ganon} ainsi que les temples abritant les morceaux de la triforce. Connaissant ses pouvoirs, tu penses qu'il est au courant de l'arrivée de la confrérie ainsi que des événements récents, mais semble ne pas agir pour le moment. Ce dernier semble actuellement rassembler ses forces, et tu espères tirer de ce bal suffisamment d'alliés ou de moyens pour contrer une éventuelle invasion. L'existence de la triforce semble être actuellement inconnue de la confrérie, et tu comptes bien que ça reste ainsi.
+	
+	
+	\paragraph{Négociations commerciales} Tu as des ressources de bois, minerai et nourriture dont tu peux te séparer, le problème étant que tu as potentiellement besoin des ressources de minerai et nourriture pour pouvoir mettre en place des défenses contre une invasion de Ganon. Ton problème principal est que tes coffres sont quasiment vides (d'où ton unique unité d'argent). Tu as l'intuition que ça vient des subventions que tu as fait envers l'industrie de poterie (Link ayant une étrange obsession de vouloir les casser en faisant des roulades dessus et en donnant des coups d'épée\dots), mais tu n'as pas encore regardé ça en détail.
+	
+	\par Tu as plusieurs moyens de te défendre contre Ganon:
+	\begin{itemize}
+		\item Soit récupérer 10 unités d'argent afin d'embaucher des mercenaires hors-contes (leur matériel (utilisation des ressources de minerai et de nourriture) étant inclus dans le prix)
+		\item Soit récupérer 5 unités d'argent tout en gardant sa nourriture et minerai, afin de pouvoir former elle-même une milice.
+	\end{itemize}
+	D'autres solutions peuvent exister, mais il faut que tu en parles avec tes conseillers (HRP: MJ) pour vérifier si elles peuvent marcher.
+}
+
+
+%12) Belle (organisation non gouvernementale prônant la défense des méchants et pour la lutte des droits de non interférence des contes)
+\pageForPlayer{12}{Belle}{
+	\item[Nom] Belle
+	\item[Conte d'origine] La Belle et la Bête
+	\item[Stéréotype] Fondatrice de la SPA - ennemie politique de la confrérie - influence politique
+	\item[Objectif] Être une épine dans le pied de la confrérie, notamment à l'occasion des négociations avec Hyrule - militer pour la SPA
+	\item[Atout majeur] Poids politique - Peut introduire de nouvelles rumeurs
+	\item[Inconvénient majeur] Surveillée par la confrérie (qui n'hésitera pas à l'abattre si elle fait un faux pas)
+	\item[Possessions] Un sens de la répartie à tout épreuve - 3 unités d'argent (fonds de la SPA)
+	\item[Ressource] Possède de la \emph{nourriture} (vient de donnation\dots parce qu'une miche de pain, plus une miche de pain, \dots).
+	\item[Entraînement au combat] Très faible
+}{
+	\paragraph{Histoire personnelle} Tu es originaire d'un conte quelconque dans lequel tu étais la plus belle fille du village et où tu vivais avec ton vieux père. Après une cueillette de champignons ayant mal tournée, tu as été recueillie par \emph{la Bête}, un prince maudit vivant dans un immense château au fond de la forêt peuplé d'objets animés. Après quelques jours passés en sa compagnie, vous vous êtes surpris à tomber amoureux l'un de l'autre, et tu as décidé de rester vivre dans la forêt, pour passer le restant de tes jours avec lui.
+	
+	\par Cependant, il y a quelques années, la Bête a été tuée par \emph{le Chasseur} pendant un raid lancé par la Confrérie. Le raid a été déclenché par un de tes anciens prétendants qui pensait que tu étais séquestré par la Bête. Tu as bien entendu pas bien pris sa mort, et, après t'être superbement disputée avec le Chasseur (qui a dû t'assommer pour te ramener à ton village), tu as décidé de pourrir la vie de la Confrérie.
+	
+	\par Ainsi, tu as fondé une Organisation Non Gouvernementale nommée la \emph{Société Protectrice des Antagonistes} (SPA). L'objectif principal de la SPA est de défendre les droits des antagonistes des contes (le terme "menace de conte" étant connoté, presque trop injurieux et le terme de "méchant de conte" quasiment une insulte). Notamment, tu milites pour rendre la liberté de mouvement aux antagonistes surveillés par la confrérie, t'opposant complètement à la politique expéditive de prévention du Chasseur. La SPA a eu un bon accueil de la société et beaucoup de militants t'ont rejoint dans ta lutte.
+	
+	\par Tu as eu vent qu'un nouveau conte (nommé \emph{Hyrule}) a été récemment découvert et qu'une soirée va se tenir. Tu as réussi à faire jouer tes relations pour t'inclure (un peu de force) dans la liste des invités. Tu comptes donc, comme d'habitude, poser les questions gênantes et être une véritable épine dans le pied politique de la confrérie. Notamment, tu penses avoir plein d'anecdotes sordides à raconter à \emph{Zelda}, la dirigeante d'Hyrule. Inversement, la confrérie te surveille attentivement et, bien qu'ils ne peuvent pas s'en prendre à toi sans raison sans provoquer de grands remous politiques, ils sont prêts à t'enfermer au moindre faux pas de ta part.
+	
+	\par Il va donc être subtile dans tes tentatives d'influencer les négociations. Par exemple, grâce à tes appuis politiques, tu peux faire discrètement passer des rumeurs durant la soirée sans trop de problème. La \emph{rébellion des grands méchants loups} pourrait constituer une autre piste. Notamment, peu après avoir établi la SPA, le \emph{Petit Poucet} t'a contacté et s'est dévoilé comme appartenant à la rébellion. Les rares informations que tu as sur la rébellion ont été déformées par la confrérie, du coup tu espères discuter avec lui pour voir si vos objectifs sont effectivement communs, puis, si c'est le cas, pour réfléchir à comment coordonner vos deux organisations pour mettre à bas la confrérie.
+	
+	\par Inversement, tu comptes enquêter sur les menaces de conte locales à Hyrule, afin de voir comment elles sont traitées, et remédier à la situation si ce n'est pas à ton goût.
+}
+
+
+
+
+\end{document}
+

@@ -1,0 +1,277 @@
+% Créé par Martin Bodin (2011).
+% Document sous licence CC BY-NC-SA
+
+\documentclass{article}
+%\documentclass{scrartcl}
+
+\usepackage{ifxetex}
+\ifxetex
+\usepackage{xunicode,fontspec,xltxtra}
+\else
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts, amssymb}
+\fi
+
+\usepackage[francais]{babel}
+\usepackage{lmodern}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage[nottoc, notlof, notlot]{tocbibind}
+\usepackage[dvipsnames]{pstricks}
+\usepackage{pst-circ, pst-plot, pstricks-add}
+\usepackage{array}
+\usepackage{url}
+%\usepackage{verse}
+\usepackage[colorlinks,linkcolor=black]{hyperref}
+\usepackage{ifthen}
+\usepackage{longtable, rotating}
+%\usepackage{fancyhdr}
+\usepackage{fancybox, framed}
+\usepackage{textcomp}
+\usepackage{marvosym}
+%\usepackage{bbding}
+%\usepackage{a4wide}
+\usepackage{geometry}
+%\usepackage{soul}
+\usepackage{lettrine}
+%\usepackage{yfonts}
+\usepackage{oldgerm}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{dictsym}
+\usepackage{pifont}
+
+\ifxetex
+\newfontfamily\timesfont[Ligatures=TeX]{Times New Roman}
+\setmainfont[Mapping=tex-text, Ligatures={Contextual, Common, Historical, Rare, Discretionary}, Numbers={OldStyle}]{Linux Libertine O}
+\fi
+
+%\newcommand{\enluminure}[2]{\lettrine[lines=3]{\small \initfamily #1}{#2}}
+
+\usetikzlibrary{trees}
+\usetikzlibrary{arrows,shapes,automata,petri}
+\usetikzlibrary{fit}
+\usetikzlibrary{calc,decorations.pathmorphing,patterns}
+
+
+\geometry{
+	includeheadfoot,
+	margin = 2.5cm,
+	top = 1.5cm,
+	bottom = 1.5cm
+}
+
+\newcommand{\ds}{\displaystyle}
+
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\preceq}{\preccurlyeq}
+\renewcommand{\succeq}{\succcurlyeq}
+
+\newcommand{\Numero}{\No}
+\newcommand{\numero}{\no}
+
+\newcommand{\fixme}{\textbf{FIXME}}
+
+\makeatletter
+
+\newcommand{\defineNewPlayer}[2]{
+	\@namedef{couleur#1}{#2}
+}
+
+\newcommand{\getPlayerColor}[1]{%
+	\@nameuse{couleur#1}%
+}
+
+\makeatother
+
+% Des commandes pratiques pour générer le document.
+\newcommand{\player}[2]{%
+	\ifthenelse{\equal{\forplayer}{y}}{%
+		\ifthenelse{\equal{\theplayer}{#1}}%
+		{#2}{}%
+	}{\begin{barv}[\getPlayerColor{#1}]{2pt}{10pt}#2\end{barv}}%
+}
+\newcommand{\mj}[1]{%
+	\ifthenelse{\equal{\forplayer}{n}}{#1}{}%
+}
+% Ici suit une commande plus complexe, car plus générale.
+\makeatletter
+
+\newcommand{\@beginColor}[3][black]{%
+	\ifthenelse{\equal{\forplayer}{n}}{%
+		\begin{barv}[#1]{#2}{#3}%
+	}{}%
+}
+
+\newcommand{\@endColor}{%
+	\ifthenelse{\equal{\forplayer}{n}}{%
+		\end{barv}%
+	}{}%
+}
+
+
+\newcommand{\ignore}[1]{}
+\newcommand{\@ident}[3]{%
+%	\ifthenelse{\equal{\manyColored}{y}}{#1}{%
+%		\marginpar{%
+%			#1%
+%			\vspace{2cm}%
+%			#2%
+%		}%
+%	}%
+	#1%
+	\ifthenelse{\equal{\forplayer}{n}}{\@beginColor{0pt}{10pt}}{}%
+	#3%
+	\ifthenelse{\equal{\forplayer}{n}}{\@endColor}{}%
+	#2%
+%	\ifthenelse{\equal{\manyColored}{y}}{#2}{%
+%		\marginpar{%
+%			#1%
+%			\vspace{5pt}%
+%			#2%
+%		}%
+%	}%
+}
+
+\def\@ouverture#1#2{%
+\ifthenelse{\equal{\forplayer}{y}}{}{%
+\ifthenelse{\equal{\manyColored}{y}}{\@beginColor[#1]{1pt}{0pt}}{%
+\hspace{-1cm}\hspace{-#2mm}\parbox[c][1pt][t]{0pt}{
+\begin{tikzpicture}
+	\node (a) {};
+	\node (b) [right of = a, node distance = 16cm] {};
+	\node (c) [below of = a, node distance = 2cm] {};
+	\draw [very thick, color = #1] (a.center) -- (b);
+	\draw [very thick, color = #1] (a.center) -- (c);
+\end{tikzpicture}
+}\vspace{-3.2mm}\par%
+}%
+}%
+}
+\def\@fermeture#1#2{%
+\ifthenelse{\equal{\forplayer}{y}}{}{%
+\ifthenelse{\equal{\manyColored}{y}}{\@endColor}{%
+\hspace{-1cm}\hspace{-#2mm}\parbox[c][1pt][b]{0pt}{
+\begin{tikzpicture}
+	\node (a) {};
+	\node (b) [right of = a, node distance = 16cm] {};
+	\node (c) [above of = a, node distance = 1cm] {};
+	\draw [very thick, color = #1] (a.center) -- (b);
+	\draw [very thick, color = #1, dashed] (a.center) -- (c);
+\end{tikzpicture}
+}\vspace{-3.2mm}\par%
+}%
+}%
+}
+
+\def\players@parse#1#2[#3][#4]{%
+% #1 :  Suite de \@ouverture
+% #2 :  Suite de \@fermeture
+% #3 :  Commande à appeler dans le cas d’une réponse négative (≃ réponse précédente).
+% #4 :  Argument (sous forme de numéro de joueur) lu actuellement.
+	\ifthenelse{\equal{\theplayer}{#4}}{%
+		\players@yes{\@ouverture{\getPlayerColor{#4}}{#4}#1}{#2\@fermeture{\getPlayerColor{#4}}{#4}}%
+	}{%
+		#3{\@ouverture{\getPlayerColor{#4}}{#4}#1}{#2\@fermeture{\getPlayerColor{#4}}{#4}}%
+	}%
+}
+
+\def\players@no#1#2{%
+	\@ifnextchar[{\players@parse{#1}{#2}[\players@no]}{\ignore}%
+}
+
+\def\players@yes#1#2{%
+	\@ifnextchar[{\players@parse{#1}{#2}[\players@yes]}{\@ident{#1}{#2}}%
+}
+
+\def\players{%
+	\ifthenelse{\equal{\forplayer}{y}}{%
+		\players@no{}{}%
+	}{%
+		\players@yes{}{}%
+	}%
+}
+
+% \players{…} est quasi-équivalent à \mj{…}.
+% \players[i]{…} est équivalent à \player{i}{…}
+% \players[i][j][k]{…} va créer du contenu uniquement pour les joueurs i, j et k (et les MJ bien sûr).
+
+\makeatother
+%\fixme :  Ces commandes posent des problèmes pour toutes les sections, footnote, etc. :S
+
+\newcommand{\colorForMJ}[2]{%
+	\ifthenelse{\equal{\forplayer}{y}}{#2}{%
+		\textcolor{\getPlayerColor{#1}}{#2}%
+	}%
+}
+\newcommand{\synopsisPerso}[3]{%
+\paragraph{}{
+\textbf{\fcolorbox{\getPlayerColor{#1}}{white}{#2}}\hspace{10pt}%
+{#3}}%
+}
+
+\newenvironment{changemargin}[2]{\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{0pt}%
+\setlength{\rightmargin}{0pt}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{0pt plus 1pt}%
+\addtolength{\leftmargin}{#1}%
+\addtolength{\rightmargin}{#2}%
+}\item }{\end{list}}
+\reversemarginpar
+%\pagestyle{fancy}
+%\fancyhf{}
+%\renewcommand{\headrulewidth}{0pt}
+%\lhead{}
+%\lfoot{}
+
+\makeatletter
+\newenvironment{barv}[3][black]{%
+% #2 largeur du trait
+% #3 distance entre le trait et le texte
+	\def\FrameCommand{{\color{#1}\vrule width #2}
+	\hspace{#3}}%
+	\MakeFramed {\advance \hsize -\width \FrameRestore }%
+}{%
+    \endMakeFramed%
+}
+\makeatother
+
+
+\definecolor{LightButter}{rgb}{0.98,0.91,0.31}
+\definecolor{LightOrange}{rgb}{0.98,0.68,0.24}
+\definecolor{LightChocolate}{rgb}{0.91,0.72,0.43}
+\definecolor{LightChameleon}{rgb}{0.54,0.88,0.20}
+\definecolor{LightSkyBlue}{rgb}{0.45,0.62,0.81}
+\definecolor{LightPlum}{rgb}{0.68,0.50,0.66}
+\definecolor{LightScarletRed}{rgb}{0.93,0.16,0.16}
+\definecolor{Butter}{rgb}{0.93,0.86,0.25}
+\definecolor{Orange}{rgb}{0.96,0.47,0.00}
+\definecolor{Chocolate}{rgb}{0.75,0.49,0.07}
+\definecolor{Chameleon}{rgb}{0.45,0.82,0.09}
+\definecolor{SkyBlue}{rgb}{0.20,0.39,0.64}
+\definecolor{Plum}{rgb}{0.46,0.31,0.48}
+\definecolor{ScarletRed}{rgb}{0.80,0.00,0.00}
+\definecolor{DarkButter}{rgb}{0.77,0.62,0.00}
+\definecolor{DarkOrange}{rgb}{0.80,0.36,0.00}
+\definecolor{DarkChocolate}{rgb}{0.56,0.35,0.01}
+\definecolor{DarkChameleon}{rgb}{0.30,0.60,0.02}
+\definecolor{DarkSkyBlue}{rgb}{0.12,0.29,0.53}
+\definecolor{DarkPlum}{rgb}{0.36,0.21,0.40}
+\definecolor{DarkScarletRed}{rgb}{0.64,0.00,0.00}
+\definecolor{Aluminium1}{rgb}{0.93,0.93,0.92}
+\definecolor{Aluminium2}{rgb}{0.82,0.84,0.81}
+\definecolor{Aluminium3}{rgb}{0.73,0.74,0.71}
+\definecolor{Aluminium4}{rgb}{0.53,0.54,0.52}
+\definecolor{Aluminium5}{rgb}{0.33,0.34,0.32}
+\definecolor{Aluminium6}{rgb}{0.18,0.20,0.21}
+
+\pgfdeclarelayer{foreground} 
+\pgfdeclarelayer{background} 
+\pgfsetlayers{background,main,foreground} 
+
