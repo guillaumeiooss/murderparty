@@ -1,0 +1,770 @@
+% Créé par Giooss, en utilisant le template Latex de Martin Bodin
+% Document sous licence CC BY-NC-SA
+
+\input{en-tetes.tex}
+
+% --- Réglages pour générer les feuilles de persos.
+\newcommand{\forplayer}{n} % n => pour le mj / y => tient compte de la commande suivante
+\newcommand{\theplayer}{1} % Numéro du joueur dont la fiche est généré
+\newcommand{\manyColored}{n}
+
+
+% --- Liste des personnages
+\defineNewPlayer{1}{Red}			% Dominique Magnus (Savant fou)
+\defineNewPlayer{2}{Blue}			% Nathan Leore (Trafiquant)
+\defineNewPlayer{3}{OliveGreen}		% Lance Rhenato (Etudiant)
+\defineNewPlayer{4}{Cyan}			% Jean Storm (Troll)
+\defineNewPlayer{5}{Brown}			% Lake Helm - futur (Visiteur du futur)
+\defineNewPlayer{6}{Yellow}			% Elza Caro (magicienne)
+\defineNewPlayer{7}{Plum}			% Lake Helm (Inspecteur)
+\defineNewPlayer{8}{Gray}			% Grégoire Bastre (Muscle drogué)
+\defineNewPlayer{9}{DarkSkyBlue}	% Delphe Umé (prophète)
+\defineNewPlayer{10}{BlueViolet}	% Redrick Illonois (Highlander)
+\defineNewPlayer{11}{Rhodamine}		% Robert Dudestin (Catalyse)
+\defineNewPlayer{12}{Violet}		% Nathan Lithe (Chimiste)
+
+
+% --- Noms des personnages
+\newcommand{\nmPlayerI}{Dominique Magnus}
+\newcommand{\nmPlayerII}{Nathan Leore}
+\newcommand{\nmPlayerIII}{Lance Rhenato}
+\newcommand{\nmPlayerIV}{Jean Storm}
+\newcommand{\nmPlayerV}{Luc Estravos}
+\newcommand{\nmPlayerVI}{Elza Caro}
+\newcommand{\nmPlayerVII}{Lake Helm}
+\newcommand{\nmPlayerVIII}{Grégoire Bastre}
+\newcommand{\nmPlayerIX}{Delphe Umé}
+\newcommand{\nmPlayerX}{Redrick Illonois}
+\newcommand{\nmPlayerXI}{Robert Dudestin}
+\newcommand{\nmPlayerXII}{Nathan Lithe}
+
+
+\newcommand{\pageForPlayer}[4]{%
+\player{#1}{
+	%\mj{\newpage}%
+	\section{Il était une fois... ton personnage~: #2}
+	\begin{description}
+		#3
+	\end{description}
+\par
+	\paragraph{Description du personnage.}
+	{#4}
+}}
+
+% -----------------------------------------------------------------------------
+
+\title{Du singulier au pluriel}
+\author{Guillaume Iooss}
+\date \today
+
+\begin{document}
+
+
+\mj{\maketitle}
+
+% *** Remarques sur les commandes latex de Martin:
+% - "\mj{ ... }"														=> permet qu'un texte ne soit vu que par le MJ.
+% - "\players[n1][n2] ... [nk] { ... }"									=> permet qu'un texte ne soit vu que par les joueurs n1, ... , nk
+% - Tout ça s'imbrique comme on veut (et tout est visible par le MJ dans tous les cas)
+% - "\pageForPlayer{n}{Nom_joueur}{description_en_item}{ ... }			=> Génère une page de description du joueur numéro "n", ayant pour nom "Nom_joueur", etc etc
+
+
+% ********************************************************
+% *** Description de l'univers - version complète (MJ) ***
+% ********************************************************
+\mj{ \section{Résumé complet de la murder pour MJ}
+
+	\subsection{Contexte historique de la murder}
+	
+	\par Cette murder se passe dans un univers de SF classique, où l'humanité est bien avancé dans sa conquête spatiale. A l’occurrence, elle fait partie d'une fédération d'empires, étalée sur une portion conséquente de la galaxie, avec des vaisseaux voyageant à des vitesses supra-luminiques qui communiquent entre les différentes planètes. Niveau aliens, ces derniers existent, mais ne se mixent pas fréquement avec les autres races (ce qui fait que leur occurrence est plutôt rare).
+	
+	\par Le lieu de la murder se passe dans une station de relai commerciale (nommée \emph{Aldébaran-4}), situé dans l'espace profond, et qui est un point de transit entre plusieurs quadrants de la galaxie. Une IA automatisée contrôle le bon fonctionnement de la station, et des officiers (majoritairement de douane) sont stationnés dans cette dernière.
+	
+	
+	\paragraph{Celui qui contrôle l'épice\dots} Dans cet univers existe une drogue, nommée \emph{l'épice}. Comme son nom l'indique\footnote{Si vous ne comprenez pas la référence, allez lire le premier tome de Dune}, la consommation de cette drogue entraîne des visions du futur. Prise en continu et en petite quantité, il devient possible de deviner les mouvements d'un adversaire une seconde à l'avance, ce qui est un boost assez significatif pour tout soldat. Prise en quantité normale, elle étourdit pendant quelques minutes la personne en consommant et déclenche une vision du futur (du type "flash d'informations").
+	
+	\par Du fait que les effets de cette drogue sont trop puissants, cette drogue a été interdite dans tout l'empire et les ingrédients de sa fabrication ont été hautement réglementés. L'utilisation de cette drogue est néanmoins autorisé au confin de l'administration (typiquement pour des grands généraux ou soldat en temps de guerre, ou des politiciens et ambassadeurs en temps de paix).
+	
+	\par Afin de lutter contre la fabrication et propagation de l'épice, l'empire a fait courir le bruit que cette drogue était dangereuse, du fait des \emph{paradoxes temporels} qu'elle peut provoquer. Si une vision ne s'accomplit pas (du fait de l'interférence de celui qui a eu la vision), le paradoxe temporaire pourrait effacer la personne en question de l'histoire, si la causalité n'est pas rétablie (cela étant présenté comme une mesure de défense de l'univers, qui évite ce dernier d'exploser au moindre pépin). En vérité, c'est de la pure propagande, et l'univers (ou plutôt le multi-vers) se fiche de la présence de paradoxes ou non. Il n'y a donc aucun risque à provoquer un paradoxe.
+	
+	\par Un des effets secondaires de l'épice est qu'un flux de particules temporelles (des \emph{tachyons}) est généré à chaque consommation de la drogue. Du coup, afin de traquer les consommation, des capteurs ont été installés par défaut dans toutes les planètes et stations de l'empire.
+	
+	\par Une police temporelle a été également mise en place, chargée de traquer les consommateurs d'épice et de neutraliser tout potentiel de paradoxe. La procédure normale consiste à mettre en quarantaine la zone où la consommation s'est produite, de trouver le consommateur et d'effacer sa mémoire avant qu'une fuite d'information future se produise. Dans le pire des cas, la force létale est autorisée (sous réserve qu'elle soit justifiée comme étant la seule option restante, les règles sont similaires à celles des forces de police).
+	
+	\par La zone est descellée uniquement sous ordre de l'officier de la police temporelle dépêché, et lorsque la \emph{situation sera résolue} d'après l'IA. L'IA a pour instruction d'effacer systématiquement toute mémoire ou information pouvant sortir de la zone scellée, pour éviter tout piratage d'information future. Elle ne peut donc qu'intervenir de manière limitée dans l'enquête.
+	
+	
+	\paragraph{La murder: alerte temporelle à Aldébaran-41} Au début de la partie, l'IA administrant la station relai Aldébaran-41 a détecté un flux de tachyon considérable venant d'une de ses sections. Elle applique dont le protocole par défaut et met en quarantaine cette partie. Fort heureusement, un inspecteur temporel (nommé \emph{\nmPlayerVII}) est déjà sur place ainsi qu'un collègue bio-chimiste (nommé \emph{\nmPlayerXII}) et un garde du corps (nommé \emph{\nmPlayerVIII}).
+	
+	\par Les joueurs correspondent aux personnes se trouvant dans la partie mise sous quarantaine, et ils sont les seuls à se trouver dans cette portion du vaisseau. L'IA de la station peut communiquer de manière limitée, et des serviteurs robotisés s'occupent de leur besoins immédiat.
+	
+	% ==========================================================
+	\subsection{La singularité temporelle et des multiples versions de personnages}
+	
+	\par En réalité, l'histoire est (bien entendu) beaucoup plus compliquée\dots
+	\begin{itemize}
+		\item En fait, le flux de tachyon n'a pas été produite du fait d'une consommation d'épice de plusieurs personnages\dots mais par une anomalie temporelle qui a fait que plusieurs personnages venant du futur se sont retrouvés à ce moment précis. Ainsi, certains personnages se retrouvent avec plusieurs versions d'eux-même. Notamment \nmPlayerI, \nmPlayerII, \nmPlayerIII, \nmPlayerIV ~et \nmPlayerVI ~sont originellement la même personne, dans cet ordre chronologique, mis à part \nmPlayerVI ~ qui vient d'une réalité alternative. Des pertes de mémoires (dû aux événements de la murder dans une itération temporelle passée) ont été impliqués, ce qui fait que certains personnages futurs ne reconnaissent pas leur incarnation passée.
+		
+		\item A côté de ça, \nmPlayerV (visiteur du futur) est une version future de \nmPlayerVII (l'inspecteur). Il est revenu dans le temps pour empécher une fin apocalyptique du monde. Le problème est que l'inspecteur croit que les paradoxes doivent être évités à tout prix, du coup, ça va être compliqué de le convaincre.
+		
+		\item La-dite fin du monde est provoquée par \nmPlayerX (l'highlander de l'espace). Ce dernier est un mutant humain qui a pour capacité d'absorber les pouvoirs d'individus ayant une mutation similaire, et de les combiner, dans le but de devenir un dieu vivant. Ce dernier risque de tomber sur \nmPlayerIX (la prophète psi) qui a des pouvoirs naturels similaire à l'épice, et qui peut potentiellement lui donner des pouvoirs de prédiction le rendant invincible.
+		
+		\item \nmPlayerIX (la psychique) est une humaine ayant des capacités de prédiction et qui a été capturée et étudiée par l'empire (ce qui a donné lieu à la création de l'épice, sur la base de l'étude de sa composition sanguine). Elle est actuellement en cavale et essaye de rester incognito. Elle a comme autre capacité de provoquer des visions, dont elle peut décider le contenu, chez quelqu'un. Cette dernière capacité est limitée, mais peut se rechargée par consommation d'épice. C'est cette capacité non connue par l'empire et qui l'a aidé à s'échapper. Elle a donc pour objectif principal de cacher ses capacités, ce qui est difficile du fait des visions qu'elle a régulièrement, ce qui provoque un flux de tachyon.
+		
+		\item Par ailleurs, \nmPlayerII (le trafiquant) a VRAIMENT de l'épice sur lui et était sensé l'échanger avec \nmPlayerVIII (l'agent de sécurité qui deale durant son temps libre). L'épice était planqué dans un paquet de farine, qui a été "emprunté" par \nmPlayerIII (l'étudiant fauché) pour faire un gâteau (dont le début de la cuisson sera lancé en début de partie). Du coup, les personnes mangeant le gâteau plus tard dans la partie consommeront de l'épice et auront des visions associées (au grand malheur de l'inspecteur).
+		
+		\item \nmPlayerXII (le chimiste) est un collègue de l'inspecteur et agent de l'empire dans le secret des rumeurs concernant l'épice et les paradoxes (du fait qu'il a de la famille proche dans la haute administration de l'empire). Du coup, il essayera de maintenir la rumeur que les paradoxes, c'est mal pour maintenir la propagande de l'empire. Il a plusieurs tests chisiques à poursuivre, mais demandant des sujets. Par exemple, il a un vaccin en cours de conception pouvant potentiellement immuniser une personne face aux effets de l'épice, mais il a besoin de cobayes ayant déjà consommé de l'épice avant de pouvoir le dévelloper. Il possède également une drogue permettant d'effacer la mémoire des dernières 48h d'une personne.
+		
+		\item \nmPlayerXI (le catalyseur) est juste une personne normale\dots mais qui apparement qui s'est pris la fameuse malédiction chinoise "Que votre vie soit intéressante". Du coup, tout évenement aléatoire pouvant arriver à quelqu'un lui arrivera probablement, et tous les personnages (notamment les plus dangereux) vont l'identifier comme étant une personne d'intérêt.
+		
+		\item \nmPlayerVI (la magicienne) est simplement une étudiante en magie dimensionnelle de l'univers parallèle d'à côté, qui a eu la malencontreuse idée d'éternuer en plein milieu d'un lancement d'un sort compliqué, et s'est retrouvée dans la station au moment de l'anomalie. Elle a pour objectif de se planquer, en attendant avoir récupérer suffisament de mana pour concevoir et lancer un sort pour retourner dans sa dimension. Elle a potentiellement moyen de détecter les utilisations de pouvoir psy de \nmPlayerIX et peut y resister. Elle a également des visions prophétiques occasionnelles (vu qu'elle a de la magie).
+		
+		\item \nmPlayerI (le savant fou) a pour projet de devenir immortel. La solution qu'il a trouvé (et retenu) est de transférer sa personnalité dans son corps du passé afin de gagner quelques décénies de plus à vivre... puis d'itérer à l'infini, en accumulant à chaque fois plus de connaissance et d'expérience. Vu qu'il n'y a pas de paradoxe possible, ça marche en pratique. Du coup, le savant fou est la vrai cause de l'anomalie temporelle qui a été causé dans la station, qui a (à son tour) provoqué l'arrivée d'autres voyageurs random à ce lieu/temps précis (le troll, la magicienne et le visiteur du futur)
+		
+		\item \nmPlayerIV (le troll) est le résultat du savant fou ayant réussi son plan et ayant vécu de nombreux millénaires. Il a donc véçu cette situation de nombreuses fois, mais avec des variantes. Il connaît donc de multiples versions des archétypes de chaque persos, et connait plusieurs cheminements de l'histoire (pour les avoir vécu). Il a des fois des surprises. Notamment c'est la première fois qu'il rencontre la magicienne.
+		
+		A force de boucler et de vivre éternellement, il est devenu fou et s'amuse donc à provoquer des situations uniques (et humouristiques de son point de vue) afin de se distraire de sa longue vie. De plus, il a trouvé un moyen alternatif de vivre indéfiniment (en s'isolant du flux temporel de n'importe quel monde parallèle dans lequel il se trouve), du coup peut agir comme il le souhaite en toute impunité, sans risque de se faire tuer.
+		
+		\item \nmPlayerII (le trafiquant) est le résultat de \nmPlayerIII (l'étudiant), après une tentative ratée du savant fou de transférer sa personnalité lors d'une précédente itération de la boucle temporelle. Notamment, leur noms sont des anagrammes l'un de l'autre.
+		
+		En gros, ça a eu les conséquences suivantes: le trafiquant s'est retrouvé projeté dans le passé (quelques années) et a dû devenir trafiquant pour notamment contrecarrer ses problèmes de manque de papier et d'argent. Le trafiquant a également eu une perte de mémoire (du à un des processus fait par le savant fou), mais sait qu'il a voyagé dans le passé et pense (sans être sûr) que \nmPlayerIII est son incarnation précédente, et qu'il s'est passé un truc. Notez que le trafiquant croit à ces histoires de paradoxes, et donc va essayer de se démerder pour que \nmPlayerIII se fasse également projeter dans le passé (d'un moyen ou d'un autre)
+	\end{itemize}
+	
+	% IA de la station
+	\paragraph{IA de la station} A côté de tout ça, l'IA de la station a un accès limité à la zone (pour éviter la propagation de toute information potentiellement paradoxale). Notamment, elle ne peut pas surveiller les personnes à l'intérieur de la zone de quarantaine (et même efface systématiquement toute information à ce propos), et a également effacé sa mémoire des dernières minutes avant que le paradoxe se produise (vu que cette mémoire peut contenir des informations paradoxales)
+	
+	
+	% ==========================================================
+	\subsection{Systèmes de jeu}
+	
+	\paragraph{Donneur d'ordre de la fin de l'isolation} L'IA gérant la station a pour instruction de desceller la zone une fois la situation résolue, càd une fois que les paradoxes ont été désamorcés. Vu que l'IA ne peut pas savoir quand la situation est résolue, il y a une hiérarchie de personne pouvant donner l'ordre de desceller la station, et donc de mettre fin à la partie. Dans l'ordre (vu qu'il peut avoir des meurtres), ces personnes sont: \nmPlayerVII (l'inspecteur), puis \nmPlayerXII (le chimiste), puis \nmPlayerVIII (l'agent de sécurité). Si aucun des 3 n'est disponible, un vote (démocratique) parmi les survivants sera fait pour décider de leur représentant.
+	
+%	\paragraph{Gestion du combat et armement} Il y a trois niveaux d'attaque:
+%	\begin{itemize}
+%		\item Faible: Blesse légèrement un joueur (ou assomme), l'incapacitant temporairement, mais lui laissant aucune séquelle postérieure.
+%		\item Fort: Blesse gravement, incapacitant un joueur tout en laissant des (potentielles) séquelles. Peut aller jusqu'à le tuer si aucun soin n'est prodigué.
+%		\item Létale: Tue instantanément un joueur.
+%	\end{itemize}
+%	\par Il est possible de réduire la puissance d'une attaque. Typiquement, si un joueur a la possibilité de faire une attaque léthale (par exemple), il peut décider de réduire la puissance de son attaque à faible ou fort.
+	
+%	\par Par défaut, une attaque à main nue est de force "Faible". Un entraînement au combat peut monter cette attaque à main nue d'un cran. Une arme (typiquement blanche) est généralement une attaque forte. Un phaseur peut aller jusqu'à une attaque létale. La consommation d'épice peut monter d'un cran la dangerosité d'une attaque.
+	
+	% Attaque surprise
+%	\par Quand un joueur est attaqué et le sait, il a la possibilité de faire une réaction (typiquement se défendre, pousser un grand cri, \dots). L'exception est si l'attaque est une attaque surprise. Càd, l'attaque a été faite hors du champs de vision de la cible ET que l'attaquant n'a pas la main sur une de ses armes. Si la cible a un entraînement martial, elle ne peut pas se faire prendre par surprise (vu que ses poings comptent comme une arme au corps à corps).
+	
+	
+	\paragraph{Visions du futur} Les visions du futur sont déclenchés une fois un certain nombre de conditions sont remplies (par exemple, une personne consomme de l'épice, ou un pouvoir d'un personnage se déclenche). Niveau mécanisme, ces visions sont préécrites sur des bouts de papier (préparés à l'avance) qui sont distribués à un joueur lors de la vision. Un joueur ayant une vision du futur ne peut pas réagir aux simulations extérieures pendant 1 minute entière (ce qui est un moyen de détecter une vision, et ce qui peut être une manière idéale de prendre quelqu'un par surprise), mais a quelques secondes d'avertissement au préalable (le MJ qui lui indique subtilement qu'une vision arrive). Un ordre des visions est imposé (= progression dans la partie), juste, le receveur de la vision n'est pas déterminé à l'avance.
+	
+	\par Au niveau des contenus des visions, du fait de la singularité temporelle, ces visions ne sont pas uniquement du futur, mais peuvent également être du passé/présent ou d'autres versions de la boucle, information qui n'est pas connue par les joueurs au début de la partie. Les visions sont un moyen pour le MJ de contrôler l'évolution de la partie, typiquement en incluant des indices/informations dans certaines visions. Les joueurs peuvent garder leur carte vision (avec le texte associé), cependant il est interdit de lire une carte vision d'un autre joueur. Il est également fortement conseillé de ne pas lire mot à mot les cartes, mais les reformuler dans ses propres termes.
+	
+	
+	\paragraph{Paradoxes} Un certain nombre de personnages croient qu'un paradoxe peut potentiellement les effacer de la réalité (dans le meilleur des cas) ou détruire l'univers (dans le pire des cas). Les joueurs qui croient aux paradoxes sont:
+	\begin{itemize}
+		\item \nmPlayerII (trafiquant), ce qui peut poser des situations intéressantes avec \nmPlayerIII
+		\item \nmPlayerIII (étudiant)
+		\item \nmPlayerV (visiteur du futur), qui ne se souvient pas de s'être rencontré dans le passé, mais ça vient peut-être d'un effacement local de mémoire
+		\item \nmPlayerVII (inspecteur), qui se débrouille pour désamorcer les-dits paradoxes.
+		\item \nmPlayerVIII (garde du corps)
+		\item \nmPlayerX (highlander), qui se fiche si d'autres personne se font effacer de la réalité, du moment que ça ne le concerne pas
+		\item \nmPlayerXI (catalyse), qui est au milieu de tout ça et veut aller pleurer tranquillement dans son coin
+	\end{itemize}
+	
+	\par L'inspecteur a pour mission de \emph{désamorcer} des paradoxes, c'est à dire qu'il a pour mission de faire jouer les scènes des visions, afin que ces dernières soient résolues. Pour cela, il a accès à l'holodeck de la station (gérant les décors), mais doit trouver des acteurs pour jouer leur rôle. Certes le contenu de la vision est exposé au grand jour, mais il n'y a plus de paradoxes, vu que la vision n'a plus besoin de forcément se passer.
+	
+	
+	% ==========================================================
+	\subsection{Évènements au cours de la murder}
+	
+	\par La progression de la murder est principalement dictée par l'avancement dans le contenu des visions. Mis à part ça, il y a d'autres évènements qui peuvent se passer pendant la murder:
+	\begin{itemize}
+		\item \textbf{Début de la murder:} Une alarme sonne, les portes se font scellées et l'IA fait un discours pour résumer la situation, avant que l'inspecteur et son équipe rentre en jeu. Le discours de l'IA est:\\
+		\emph{(voix mécanique)} \texttt{ALERTE! ALERTE!}\\
+		\texttt{Flux de tachyon détecté dans la zone 25 du relai commercial Aldébaran-41!}\\
+		\texttt{Scellage complet du secteur, conformément au protocole\dots Terminé.}\\
+		\texttt{Effacement de la mémoire des dernières minutes, conformément au protocole\dots Terminé.}
+		
+		\emph{(voix plus douce)}
+		\texttt{Cher voyageurs en transit, nous vous informons qu'un flux de particule temporel vient d'être détecté dans votre secteur, ce qui implique une consommation illégale d'épice et donc un risque important de paradoxe. Nous vous rappelons que tout paradoxe non résolu peut signifier votre effacement de cette réalité, voire la destruction de l'univers. Heureusement, une équipe de résolution de paradoxe est en chemin et nous vous prions de bien vouloir coopérer avec ces derniers. Le secteur sera descellé une fois que ce dernier jugera les paradoxes désamorcés, et le ou les coupables sécurisés. Encore une fois, nous vous excusons de la gène occasionnée.}
+		
+		
+		\item \textbf{Gâteau à l'épice ($\approx$ 30/45 mins):} \nmPlayerIII (l'étudiant) était en train de cuisiner un gâteau, utilisant (involontairement) de l'épice à la place de la farine. Ce gâteau venait d'être mis au four au moment où l'alerte vient d'être sonné. La cuisson est gérée par des machines automatisées (et donc par l'IA) et cette dernière aura comme instruction de servir une part par personne.
+		
+		\par Le problème vient de l'algorithme de comptage des personnes, qui tient compte des doublons et quintuplons. De plus, \nmPlayerX n'est pas identifié comme étant humain (suite à toutes les mutations présents dans son corps). Ainsi, uniquement 6 parts de gâteaux (sans épice = une moitié de gâteau) seront distribuées, alors qu'il y a 12 personnes physiquement à bord.
+		
+		\par Si interrogée, l'IA insistera qu'il y a uniquement "Six personnes à bord, bande de gourmands! Et que le second service ne viendra qu'une fois que vous aurez fini vos parts". Le comptage est fait en "regroupant tous les signes de vie perçu par tous les capteurs dispersés dans la zone, gardant que ceux qui sont humains (afin d'éliminer tout ce qui est insecte et animal) et compter le nombre de différences". 
+		
+		\par Le gâteau a originellement 12 parts, 6 parts sont distribuées au début, mais 6 autres peuvent. Les personnes mangeant leur part de gâteau auront une vision quelques minutes après (au grand désespoir de l'inspecteur).
+		
+		
+		\item \textbf{Évènements potentiellement récurrents déclenchés par les joueurs:} \nmPlayerVI (la magicienne) et \nmPlayerIX (la psychique) ont des visions de manière récurrente (dû à leurs capacités). \nmPlayerI a une suite de mission visant à s'emparer du corps de \nmPlayerII ou \nmPlayerIII. \nmPlayerXII a un ensemble de quêtes secondaires visant à développer des nouvelles substances chimiques utiles (les tests pouvant avoir des effets assez aléatoires).
+		
+		\item \textbf{Fin de la murder:} Cf la sous-section précédente, paragraphe "Donneur d'ordre de la fin de l'isolation".
+	\end{itemize}
+	
+	
+	\section{Liste des visions}
+	
+	\par Les visions sont dans l'ordre dans lesquelles elles devraient être distribuées, de faiblement à fortement incriminantes/informatives. Cela permet d'induire une progression dans la murder. Du fait de la malédiction de \nmPlayerXI, toutes les visions le concernant sont généralement plutôt au début, indépendamment de leur niveau d'incrimination.
+	
+	\begin{enumerate}
+		% BAS
+		% 2 et 8 - marchandage d'épice (2 est sensé délivré de l'épice à 8, sauf qu'il a paumé son paquet de farine, vu que 3 l'a volé entre temps)
+		\item Tu vois \nmPlayerII dans la cuisine, qui cherche frénétiquement quelque chose, ouvrant et refermant des placards, pots\dots Il a l'air de s'affoler de plus en plus et accélère encore plus ses recherches, manquant de faire tomber plusieurs pots. Tout à coup, \nmPlayerVIII ouvre la porte violemment, faisant sursauter \nmPlayerII. Après avoir vérifiés qu'ils étaient bien seuls, \nmPlayerVIII met en joue \nmPlayerII et lui demande "Où es-ce qu'elle est?"
+		
+		% 11, intervient alors que 1 était en train de convertir 2 et exécute 1. 7 arrive après.
+		\item Tu vois \nmPlayerII à terre et évanoui, avec \nmPlayerI à genoux à côté. Une des jambes de \nmPlayerI semble s'être pris un tir de blaster. Au dessus d'eux se dresse \nmPlayerXI, qui lève le blaster dans sa main et met en joue \nmPlayerI. \nmPlayerI ouvre les yeux de surprise et dit rapidement "Non non no-" avant que \nmPlayerXI l'exécute d'un tir entre les deux yeux. A ce moment là, \nmPlayerVII arrive dans la salle et \nmPlayerXI se fige. Après un long silence gêné, \nmPlayerVII dit "Euuuuh\dots Ce n'est vraiment pas ce que vous croyez."
+		
+		% 5 vient de révéler ce qu'il est à 7 & le potentiel futur apocalyptique
+		\item Tu vois \nmPlayerVII qui regarde \nmPlayerV\dots correction: qui fixe d'un regard abasourdi \nmPlayerV, qui est un peu mal à l'aise sous l'attention. \nmPlayerVII rompt le silence gêné "\dots Vraiment?", à quoi \nmPlayerV acquiesce de la tête. "Non, parce que je vois au moins 3 raisons pour lesquelles ce que tu me dis est impossible, sans compter le fait que tout le plan est juste complètement suicidaire". \nmPlayerV garde le silence pendant un moment, avant que l'inspecteur continue "La situation s'était vraiment dégradée à ce point?". Sur quoi \nmPlayerV lui répond "Pire".
+		
+		% 4 et 11
+		\item Tu vois \nmPlayerXI roulé en boule et sanglotant. \nmPlayerIV est assis à côté, sirotant de manière décontractée sa boisson et lui dit "En tout cas, félicitation pour le feu d'artifice. Tu viens probablement de mettre fin à un empire millénaire de manière assez radicale. Et de quelle manière! Tant d'éléments imbriqués, s'entraînant et se combinant entre eux\dots c'était magnifique. Je doute honnêtement que, si c'était mon but, je n'aurais pas pu faire mieux. Enfin si: j'aurais au moins eu la décence de fournir du pop-corn à mes spectateurs". Cela ne semble vraiment pas remonter le moral de \nmPlayerXI, qui sanglote encore plus.
+		
+		% Réaction de 9 à 11
+		\item Tu vois \nmPlayerIX fixer \nmPlayerXI du regard, d'un air intriguée. "Je n'ai jamais vu autant de potentiel chaotique entourant une personne". \nmPlayerXI pousse un soupir agacé "Je sais\dots". \nmPlayerIX l'ignore et continue "C'est comme si quelqu'un avait pris ton fils du destin, et s'était amusé à le mettre en boule, tout en le parsemant de nœuds papillons". \nmPlayerXI lui répond "Oui, je sais! Mais es-ce que ça veut dire que vous pouvez résoudre le problème?".
+		
+		% Expérience de 12 sur 3 non concluante
+		\item Tu vois \nmPlayerIII qui s'approche de \nmPlayerXII de manière hésitante. "Dites\dots au sujet de votre test que vous m'aviez fait tout à l'heure?" \nmPlayerXII: "Ah oui, au sujet de ta consommation d'épice?". \nmPlayerIII a l'air de s'énerver sur cette remarque, mais retient sa langue, laissant \nmPlayerXII finir: "Alors, ça a donné quoi?". \nmPlayerIII lui répond avec un regard noir, avant de soulever son pull, montrant des taches rouges qui couvre la peau de son ventre. "Oh\dots C'est donc un échec".
+		
+		
+		% INTERMÉDIAIRE
+		% 6 protégeant 9 face à 10
+		\item Tu vois \nmPlayerX qui scie une porte en utilisant des dagues laser. Après quelques secondes à finir son tracé, la porte cède, révélant \nmPlayerVI et \nmPlayerIX. Cette dernière tremble à terre, derrière les jambes de \nmPlayerVI et semble blessée. \nmPlayerVI semble furieuse et proclame "Shoggy? Attaque!". Des grognements de chien surgissent d'un coin de la pièce, mais la vision s'interrompt brutalement avant que tu puisses décerner quoique ce soit.
+		
+		% 9 geass 8 pour tuer 10
+		\item Tu vois \nmPlayerIX regarder \nmPlayerVIII, ce dernier étant avachi dans un coin de la pièce, le regard vide. \nmPlayerIX sort de la pièce, quelques secondes avant que \nmPlayerVIII se réveille en sursaut. Ce dernier semble affolé et, après s'être assuré d'être seul dans sa salle murmure à lui-même "Il faut que j'élimine \nmPlayerX avant qu'il devienne trop dangereux. La survie de l'empire peut en dépendre", alors qu'il sort de la pièce, il passe devant \nmPlayerIX qui a un sourire satisfait au coin.
+		
+		% 1 donne une seringue à 3 qui efface ses mémoires
+		\item Tu vois \nmPlayerI passer une seringue à \nmPlayerIII, en lui disant "Voilà ce qui devrait régler tes problèmes de faim d'ici les prochains jours". \nmPlayerIII semble un peu hésitant, mais accepte finalement et se l'injecte dans le bras. \nmPlayerI quitte la salle, laissant \nmPlayerIII seul, qui semble s'endormir. Quelques minutes plus tard, \nmPlayerIII se réveille d'un sursaut, regarde ses alentours d'un air apeuré, avant de se dire à soit-même "Qu'es-ce qu- Où suis-je?".
+		
+		% 4 parle à 11 et révèle l'existence de la boucle temporelle
+		\item Tu vois \nmPlayerIV parler à \nmPlayerXI "\dots En magouillant ainsi, l'étudiant a fini par tuer l'highlander en combat singulier et s'est fait promettre général de l'empire, le tout contre sa volonté. D'un autre côté, les acteurs étaient tellement prévisibles que c'était comme s'ils demandaient à ce que quelqu'un les manipulent. Ce n'est pas comme toi: d'habitude le chaos qui t'entoures est extrêmement difficile à contrôler et donc très rafraîchissant à observer. "D'habitude?" releva \nmPlayerXI d'un air intrigué. "\dots Oui, c'est la 147ème fois que tout cela c'est déroulé, avec des variations diverses et parfois provoquées. Et je ne parle même pas des multiples versions d'une même personne qui se promène".
+		
+		
+		% HAUT
+		% 12 et 7 mettent 9 aux arrêts car fugitive de l'empire. 9 se débat et affirme qu'elle a été illégalement emprisonnée, et qu'elle n'aurait jamais dû laisser ces expériences se mener (car sans elles, cette maudis épice n'aurait jamais existé)
+		\item Tu vois \nmPlayerVII plaquer \nmPlayerIX face contre terre, avec \nmPlayerXII à côté, lui disant "\nmPlayerIX, vous êtes en état d'arrestation. Vous serez raccompagné très prochainement dans les laboratoires de l'empire desquels vous vous êtes enfuie". \nmPlayerIX se débat et crache "Je n'aurais jamais dû vous laisser m'étudier. Sans cela, cette maudite épice n'aurait jamais existée".
+		
+		% Révélation de 12 à 7 comme quoi les paradoxes sont du bidon. 7 craque mentalement, 12 l'abat
+		\item Tu vois \nmPlayerXII dressé au dessus de \nmPlayerVII qui est blessé. \nmPlayerVII prend la parole: "Pourquoi? Tu sais aussi bien que moi que c'est la fin et que ces paradoxes ne peuvent plus se faire éviter. Donc pourquoi prendre la peine de tuer systématiquement tous les gens de la zone et d'en créer encore plus par la même occasion?". \nmPlayerXII sourit "Es-ce que tu connais le secret de l'administration de l'empire?". \nmPlayerVII se fige, confus et silencieux.	Le sourire de \nmPlayerXII s'élargit encore plus: "Le grand secret de l'administration de l'empire, c'est que les paradoxes n'existent pas". Après cette révélation, \nmPlayerVII écarquilla des yeux, choqué, avant de pousser un long cri de rage et de folie, qui ne s'arrêta qu'une fois que \nmPlayerXII l'achève d'un coup de blaster.
+		
+		% 12 tue 6 puis commence à boire son sang... Puis truc se passe mal, incompréhension... "C'est impossible?" avant qu'il vomisse.
+		\item Tu vois \nmPlayerXII décapiter violemment \nmPlayerVI avec ses dagues, puis s'agenouiller pour porter le sang qui s'écoule de la blessure à ses lèvres. Après quelques secondes passées à boire, il se relève brusquement, des veines pulsant sur ses joues et ayant l'air très confus. Il fit quelques pas en titubant avant de s'exclamer "Mais\dots C'est impossible!". Puis, il se tordit de douleur et vomit.
+		
+		% Révélation que 1/2/3/4 sont la même personne par 4 (ce qui fait 4 sur 11\dots)... ce qui est deux fois plus que cet inspecteur et sa version future qui veut empêcher la destruction de l'empire.
+		\item Tu vois \nmPlayerII, \nmPlayerI et \nmPlayerIII se disputer et s'entre-pointer du doigt, avant que \nmPlayerIV arrive dans la pièce et dise tout fort "Vous savez que se parler à soi-même est un des premiers signe de la folie?". Ses trois vict-euh, interlocuteurs s'arrêtent et le regardent, ébahis. \nmPlayerIV continue "\dots Bon d'accord, c'est moi qui dit ça, mais nous sommes les mieux placés pour savoir que nous sommes légèrement hypocrites". Le silence continua à régner dans la pièce. "Et encore", continua \nmPlayerIV pas du tout affecté, "nous ne tenons pas la comparaison avec l'inspecteur et sa version future. Aux dernières nouvelles, ils voulaient s'entre-étrangler. Ça ne doit vraiment pas être sain tout ça".
+	\end{enumerate}
+	
+	Ce qui fait (pour l'instant) 14 visions, 12 venant des parts de gâteau à l'épice, 2 pour \nmPlayerIX, du fait de sa nature et une ou deux pour potentiellement \nmPlayerVI. En plus, \nmPlayerIX peut rajouter des visions à tout ça.
+}
+
+
+% TODO: système d'annonce publique ???
+%	=> Laisser du papier et un tableau au cours de la partie pour pouvoir faire des annonces pseudo-anonymes
+
+% TODO: idées de persos supplémentaires?
+% TODO: playlist ?
+
+
+
+
+% ***********************************************************************************************************
+% *** Titre factice pour la tête des fiches de personnages (et histoire de savoir qui est qui pour le MJ) ***
+% ***********************************************************************************************************
+
+\players[1]{\begin{center}\textbf{\nmPlayerI}\end{center}}
+\players[2]{\begin{center}\textbf{\nmPlayerII}\end{center}}
+\players[3]{\begin{center}\textbf{\nmPlayerIII}\end{center}}
+\players[4]{\begin{center}\textbf{\nmPlayerIV}\end{center}}
+\players[5]{\begin{center}\textbf{\nmPlayerV}\end{center}}
+\players[6]{\begin{center}\textbf{\nmPlayerVI}\end{center}}
+\players[7]{\begin{center}\textbf{\nmPlayerVII}\end{center}}
+\players[8]{\begin{center}\textbf{\nmPlayerVIII}\end{center}}
+\players[9]{\begin{center}\textbf{\nmPlayerIX}\end{center}}
+\players[10]{\begin{center}\textbf{\nmPlayerX}\end{center}}
+\players[11]{\begin{center}\textbf{\nmPlayerXI}\end{center}}
+\players[12]{\begin{center}\textbf{\nmPlayerXII}\end{center}}
+
+
+
+% ********************************************************************
+% *** Description de l'univers - version partielle (tout le monde) ***
+% ********************************************************************
+
+\players[1][2][3][4][5][6][7][8][9][10][11][12]{
+	\section{Informations officielles}
+	\players[6]{																	% Magicienne
+		Tu n'as pas la moindre idée de ce qu'il se passe dans cet univers\dots et encore moins d'idée de ce qu'il se passe tout court.
+	}
+	\players[1][2][3][4][5][7][8][9][10][11][12]{									% Pas la magicienne
+		\paragraph{Bienvenue en l'an 3412} Voilà plus d'un millénaire que l'humanité s'est lancée à la conquête des étoiles, à l'aide de vaisseau pouvant aller à des vitesses supra-luminique. L'empire humain couvre désormais une bonne portion de la galaxie et le commerce est en plein essor entre les différents secteurs de cet empire. Quelques espèces aliens ont été rencontrées, mais après des débuts diplomatiques tumultueux, des accords ont été conclus se résumant en gros à "tout le monde reste dans son territoire, avec un libre passage autorisé". Rencontrer un alien est donc rare, mais peut arriver.
+		
+		\par La murder se passe dans une station de relai commerciale (nommée \emph{Aldébaran-4}), située dans l'espace profond. Cette station est un point de transit entre plusieurs secteurs de l'empire et une IA automatisée contrôle le bon fonctionnement de la station (notamment la gestion des docks, la maintenance de la station, \dots). Des officiers (majoritairement de douane) sont stationnés dans la station, et inspecte régulièrement les cargaisons commerciales pour vérifier la non-présence de produits illégaux.
+		
+		% Épice
+		\paragraph{Qui contrôle l'épice\dots} Il existe une drogue dans cet univers nommée \emph{l'épice}. Comme son nom l'indique, la consommation de cette drogue provoque des visions du futur. Aussi, si quelqu'un en prend en petite quantité et en continu, elle devient capable de prédire les mouvements d'un adversaire une seconde à l'avance, ce qui augmente sa capacité de combat.
+		
+		\par Cependant, la consommation de cette drogue peut entraîner un \emph{paradoxe temporel}, qui est un risque majeur. En effet, toute personne impliquée dans un paradoxe non résolu risque de se faire effacer de la réalité, dans le meilleur des cas\dots le pire des cas étant (en théorie) la destruction de l'univers. Ainsi, la production et l'utilisation de l'épice est interdite dans tout l'Empire, et son usage est uniquement réservée à l'armée et aux secteurs critiques du gouvernement, sous environnement contrôlé.
+		
+		% Flux de tachyon + inspecteur de résolution de paradoxe
+		\par La consommation d'épice provoque une émission de flux de particules temporelles nommées \emph{tachyon}. Ainsi des détecteurs ont été installés de manière systématique autour de chaque planète, vaisseau et station pour pouvoir identifier une consommation d'épice et donc intervenir.
+		
+		\par L'intervention est généralement menée par un inspecteur de résolution des paradoxes qui a plusieurs objectifs: identifier le consommateur d'épice et confisquer la drogue, et désamorcer le paradoxe. Le désamorçage de paradoxe se fait généralement en utilisant un \emph{holodeck}, càd une salle qui peut simuler des objets à coup d'hologramme, afin de pouvoir réacter le paradoxe. La force létale n'est autorisée uniquement qu'en dernier recours et devra être justifiée.
+		
+		\paragraph{La murder: alerte temporelle à Aldébaran-41} Un flux de tachyon a été détecté dans votre secteur de la station, vous enfermant avec d'autres personnes. Un inspecteur de résolution des paradoxes et son équipe est dépêché pour tenter de déterminer ce qu'il s'est passé, et de désamorcer tout paradoxe pouvant survenir.
+	}
+	
+	
+	\section{Informations pratiques sur la murder}
+	
+	\paragraph{Liste des personnages} La liste des personnages présents dans la zone, ainsi que leur fonction déclarée, sont:
+	\begin{center}
+	\begin{tabular}{|l||l|}
+		\hline
+		\emph{\nmPlayerVII} & Inspecteur de résolution des paradoxes\\
+		\emph{\nmPlayerXII} & Chimiste, assistant de l'inspecteur\\
+		\emph{\nmPlayerVIII} & Garde du corps de l'inspecteur\\
+		\hline
+		\emph{\nmPlayerX} & Voyageur - Mercenaire\\
+		\emph{\nmPlayerII} & Voyageur - Marchand\\
+		\emph{\nmPlayerXI} & Voyageur\\
+		\emph{\nmPlayerI} & Voyageur\\
+		\emph{\nmPlayerIX} & Voyageuse\\
+		\emph{\nmPlayerVI} & Voyageuse\\
+		\emph{\nmPlayerIII} & Voyageur\\
+		\emph{\nmPlayerIV} & Voyageur\\
+		\emph{\nmPlayerV} & Voyageur\\
+		\hline
+	\end{tabular}
+	\end{center}
+	
+	\par (Note HRP: le genre des personnes peuvent changer d'une partie à une autre, dépendant des joueurs. Je vous laisse le soin de substituer les pronoms et accord si changement il y a).
+	
+	\paragraph{Système de combat} Il y a trois niveaux d'attaque:
+	\begin{itemize}
+		\item \textbf{Faible:} Blesse légèrement un joueur (ou assomme), l'incapacitant temporairement, mais lui laissant aucune séquelle postérieure.
+		\item \textbf{Fort:} Blesse gravement, incapacitant un joueur tout en laissant des (potentielles) séquelles. Peut aller jusqu'à le tuer si aucun soin n'est prodigué dans les quelques minutes qui suivent.
+		\item \textbf{Létale:} Tue instantanément un joueur.
+	\end{itemize}
+	\par Il est possible de réduire la puissance de son attaque. Typiquement, si un joueur a la possibilité de faire, par exemple, une attaque létale, il peut décider de réduire la puissance de son attaque à faible ou fort.
+	
+	\par Par défaut, une attaque à main nue est de force "Faible". Un entraînement au combat peut monter cette attaque à main nue d'un cran. Une arme (typiquement blanche) est généralement une attaque forte. Un phaseur peut aller jusqu'à une attaque létale. La consommation d'épice peut monter d'un cran la dangerosité d'une attaque.
+	
+	% Attaque surprise
+	\par Quand un joueur est attaqué et le sait, il a la possibilité de faire une réaction (typiquement tenter de se défendre, pousser un grand cri, \dots). L'exception est si l'attaque est une attaque surprise. Càd, l'attaque a été faite hors du champs de vision de la cible ET que l'attaquant n'a pas la main sur une de ses armes. Si la cible a un entraînement martial, elle ne peut pas se faire prendre par surprise (vu que ses poings comptent comme une arme au corps à corps).
+	
+	% Répercutions judiciaire
+	\par Les règles judiciaire classique de l'empire s'appliquent toujours. Du coup, s'il y a meurtre sans bonne raison apparente et que le coupable est identifié, il y aura des répercussions judiciaires par la suite. Tuer en défense est acceptable, si vous arrivez à prouver que vous étiez bien dans ce genre de situation.
+	
+	% Armement en évidence des joueurs
+	\par Il est publiquement connu que les personnes suivantes sont (ou ont été) armées:
+	\begin{itemize}
+		\item \nmPlayerVIII, en tant que garde du corps, possède un phaseur (puissance létale), et un entraînement au combat (puissance fort à mains nues)
+		\item \nmPlayerX, en tant que mercenaire, a une licence pour posséder un phaseur, mais s'en est fait dépossédé très rapidement une fois l'alerte donné, conformément au protocole. En plus de ce phaseur, on lui a également retiré une épée longue (en titanium) et une dague (à vibrations). Il est cependant entraîné au combat (puissance fort à mains nues).
+		\item \nmPlayerXI semble avoir eu de l'entraînement au combat à mains nues, mais n'était pas armé.
+	\end{itemize}
+	
+	
+	\paragraph{Système des visions du futur} Si une personne a une vision au cours de la partie, il se passe les choses suivantes. Niveau RP, le personnage sent une vision arriver quelques secondes avant cette dernière (typiquement quelques minutes après la consommation d'épice). Puis, il a une vision qui prend une minute, où le personnage est figé et ne peut pas répondre à des stimuli extérieur. Au bout d'une minute, la vision se termine et le personnage revient à lui, avec les informations de sa vision.
+	
+	\par Au niveau mécanique, le MJ fera un signe discret à un joueur s'il a une vision (tapotage d'épaule, passage de carte vision en douce) et lui donnera une carte vision décrivant la vision. Le joueur a quelques secondes pour s'excuser avant que sa vision frappe et doit compter 1 minutes pile sans qu'il puisse réagir avant de pouvoir reprendre la partie normalement. Il conserve la carte vision avec lui, mais il est interdit de la montrer ou de la lire directement à quelqu'un d'autre. Le joueur est donc obligé de reformuler avec ses propres mots le contenu de la carte, s'il veut en transmettre les informations.
+	
+	\par Par ailleurs, les visions décrivent une scène (émotionnellement forte) du futur. Elles révèlent donc systématiquement des informations sur des joueurs, et ne peuvent pas se faire données à l'identique à un autre joueur.
+}
+
+
+
+% ****************************************************************************************************************************************************
+% ****************************************************************************************************************************************************
+% ****************************************************************************************************************************************************
+
+
+% ***********************
+% *** Fiche de persos ***
+% ***********************
+
+
+%1) Savant Fou
+\pageForPlayer{1}{\nmPlayerI}{
+	\item[Nom] \nmPlayerI
+	\item[Stéréotype] Savant fou
+	\item[Objectif] Transférer ses mémoires dans son corps passé, afin de devenir immortel
+	\item[Atout majeur] A déjà vécu cette situation au moins une fois
+	\item[Inconvénient majeur] A la mémoire floue sur la fois précédente
+	\item[Possessions] Un kit de conversion
+	\item[Entraînement au combat] Aucun
+	\item[Compétences spéciales] Expert en physique fondamentale et biologie (est théoriquement compétent dans ces domaines scientifiques)
+}{
+	\paragraph{Histoire personnelle} 
+	
+	% TODO
+	
+	% TODO: cause principale de la déstabilitation temporelle
+	
+	% TODO: ne sait plus qui exactement il était. Sait juste qu'il trafiquait de l'épice, mais mémoire floue (suppose qu'il y a eu un effacement de mémoire à un moment). Sait qu'il était sensé avoir un contact à qui filer la cargaison d'épice dans la station. Compte faire des tests ADN pour s'assurer que c'est bien lui
+	
+	% TODO: possède des seringues (armes forte, dépendant ce qu'il met à l'intérieur)
+	% TODO: Expert en physique fondamentale et biologie
+	
+	
+	\paragraph{Quête personnelle: processus de conversion} 
+	
+	% Étapes à faire
+	% Première: test ADN possible (pour checker si c'est lui ou pas)
+	% Seconde: TODO ???
+	% Avant-dernière: effacement de mémoire (mais conserve les instincts)
+	% Dernière: transfert de conscience (condition de victoire + survie du nouveau corps / la cible récupère ta feuille de perso et continue à jouer avec toi)
+	
+	% TODO: matos => possibilité d'utiliser l'épice pour booster le combat
+	
+	% TODO: ne croit pas aux paradoxes
+	% TODO: mécaniquement, préparer des cartes correspondant aux effets de ses drogues
+}
+
+
+%2) Trafiquant
+\pageForPlayer{2}{\nmPlayerII}{
+	\item[Nom] \nmPlayerII
+	\item[Identité secrète] \nmPlayerIII
+	\item[Stéréotype] Trafiquant
+	
+	\item[Objectif] Réussir à ne pas se faire griller comme trafiquant d'épice - optionnellement réussir sa vente
+	\item[Atout majeur] 
+	\item[Inconvénient majeur] 
+	\item[Possessions] 
+	\item[Entraînement au combat] 
+}{
+	\paragraph{Histoire personnelle}
+	
+	% TODO
+	
+	% TODO: couverture du trafic: marchand de nourriture organique (notamment a planqué l'épice comme paquet de farine)
+	
+	% TODO: sait que 3 est lui du passé. Ne sait pas comment il est revenu dans le temps (mémoire floue sur ces évenements, se souvenait même pas de s'il s'était rencontré ou pas)
+	
+	% TODO: matos => possibilité d'utiliser l'épice pour booster le combat
+}
+
+
+
+%3) Etudiant
+\pageForPlayer{3}{\nmPlayerIII}{
+	\item[Nom] \nmPlayerIII
+	\item[Stéréotype] Étudiant
+	
+	\item[Objectif] 
+	\item[Atout majeur] 
+	\item[Inconvénient majeur] 
+	\item[Possessions] 
+	\item[Entraînement au combat] 
+}{
+	\paragraph{Histoire personnelle}
+	
+	% TODO
+	
+	% TODO: étudiant fauché, a "libéré" des ingrédients de cuisine dans les entrepôts (car il avait la dalle) et ne veut pas se faire prendre
+	
+}
+
+
+
+%4) Troll immortel
+\pageForPlayer{4}{\nmPlayerIV}{
+	\item[Nom] \nmPlayerIV
+	\item[Identité secrète] \nmPlayerI, mais ce n'est probablement plus pertinent
+	\item[Stéréotype] Troll immortel
+	
+	\item[Objectif] S'amuser, en semant le chaooooos
+	\item[Atout majeur] A vécu différentes versions de cette situation des milliers de fois
+	\item[Inconvénient majeur] N'est pas complètement sûr de quelle version des personnages il s'agit - Fou
+	\item[Pouvoir] Ne peut pas mourir (se régénère dans une dimension parallèle)
+	\item[Possessions] Accès à une poche dimensionnelle lui permettant de synthétiser a peu près n'importe quel objet, moyennant un délai
+	\item[Entraînement au combat] Aucun
+}{
+	\paragraph{Histoire personnelle} 
+	
+	
+	% TODO
+	
+	
+	Il y a très très longtemps, tu t'appelais \nmPlayerI (ou au moins tu étais une version de lui), et tu avais pour projet de devenir immortel en transférant ta conscience dans ton corps du passé, déclenchant une alerte temporelle.
+	
+	
+	
+	
+	Ton plan a réussi, te permettant de cumuler plusieurs millénaires de connaissances, entre chaque itérations temporelles. Finalement, tu as trouvé une solution alternative
+	
+	% TODO
+	
+	
+	% TODO: 5423ème fois
+	% TODO: vision => peut faire des trucs bizarre en présence d'une anomalie temporelle (typiquement montrer une version alternative, ou le passé)
+	% TODO: ne croit pas aux paradoxes
+	
+	\par Ton objectif principale est de t'amuser, histoire d'égayer ta vie éternelle.
+	
+	% TODO: possède une main taser (mécaniquement a une carte "Message du MJ: Si vous venez de serrer la main à \nmPlayerIV (ou tout autre contact direct avec votre peau) et qu'il vous a montré cette carte, vous venez de vous faire taser et tombez dans les pommes *par surprise* pendant 3 minutes)
+	
+	% TODO: couverture: touriste, en transit vers Andromède
+	
+	
+	\paragraph{Archétypes possibles pour chaque personnages}
+	\begin{center}
+	\begin{tabular}{|l||l|}
+		\hline
+		\emph{\nmPlayerVII} & Inspecteur honnête - Trafiquant d'épice\\
+		\emph{\nmPlayerXII} & Fabriquant d'épice (cherche à l'améliorer) - Comploteur de l'empire\\
+		\emph{\nmPlayerVIII} & Robot terminator - Dealer d'épice\\
+		\emph{\nmPlayerX} & Agent secret de l'empire - Highlander de l'espace - Empereur en vacances\\
+		\emph{\nmPlayerII} & Trafiquant - Fils caché de l'empereur\\
+		\emph{\nmPlayerXI} & Catalyse - Demi-dieu du destin (se demandant c'est quoi ce bazar)\\
+		\emph{\nmPlayerI} & Alien infiltré - Grand prêtre du destin - Savant fou\\
+		\emph{\nmPlayerIX} & Élue de la prophétie (quel qu'elle soit) - Prophète psychique\\
+		\emph{\nmPlayerVI} & Euh... aucune idée? (comment c'est possible?)\\
+		\emph{\nmPlayerIII} & Tueur à gage (visant \nmPlayerX) - Étudiant inoffensif\\
+		\emph{\nmPlayerIV} & C'est toi!\\
+		\emph{\nmPlayerV} & Visiteur du futur - Robot terminator\\
+		\hline
+	\end{tabular}
+	\end{center}
+	\par Concernant \nmPlayerVI, c'est la première boucle que tu la vois. Ça aurait dû être impossible, vu le nombre considérable d'itération que tu as fait, et que tu as dû déjà avoir exploré toutes les possibilités. Un peu de nouveauté sera bon pour ton amusement et tu as hâte d'analyser cette nouvelle venue.
+	
+	\par Dépendant de l'itération, certaines personnes sont en fait les mêmes, à des points temporels différents. Par exemple, \nmPlayerV est fréquemment une version future de \nmPlayerVII, ou, au minimum, une version venant du futur de \nmPlayerVII et qui cible ce dernier. \nmPlayerII et \nmPlayerIII sont également des fois la même personne, tout comme \nmPlayerX et \nmPlayerVIII ou \nmPlayerXII et \nmPlayerIII.
+	
+	\par \nmPlayerXI a été fréquemment la cible de pas mal d'événements. Des fois, c'est parce qu'il était maudit, des fois c'est parce qu'il provoque les-dits événements. Dans tous les cas, c'est une personne que le chaos suit de très près, et donc intéressante à garder à l'œil, voir à s'amuser avec.
+	
+	\paragraph{Mécanisme de synthèse d'objet} Possibilité de l'utiliser 2 fois durant la partie. Le MJ te donne un bout de carton, un marqueur et une paire de ciseau, et le temps que ça te prend à synthétiser l'objet correspond au temps que ça te prend à dessiner, puis découper le carton pour fabriquer l'objet.
+}
+
+
+
+%5) Visiteur du futur
+\pageForPlayer{5}{\nmPlayerV}{
+	\item[Nom] \nmPlayerV
+	\item[Identité secrète] \nmPlayerVII
+	\item[Stéréotype] Visiteur du futur
+	
+	\item[Objectif] 
+	\item[Atout majeur] 
+	\item[Inconvénient majeur] 
+	\item[Possessions] 
+	\item[Entraînement au combat] 
+}{
+	\paragraph{Histoire personnelle} 
+	
+	
+	% TODO
+	
+	% TODO: a littéralement improvisé sur nom nom (L- euh Luc .... Estravos? (vu qu'il est en "extra") )
+	% TODO: objectif: éviter la création d'un "super-méchant" (avec des pouvoirs divins) qui apparemment a été créé durant le lockdown et qui a pris le contrôle de l'empire et détruit le reste
+	
+	% TODO: sait qu'il n'a pas conservé les souvenirs en tant que 7 => effacement de la mémoire (2 jours après). But: se sacrifier temporellement pour éliminer la menace
+	
+}
+
+
+
+%6) Magicienne
+\pageForPlayer{6}{\nmPlayerVI}{
+	\item[Nom] \nmPlayerVI
+	\item[Stéréotype] Magicienne
+	
+	\item[Objectif] 
+	\item[Atout majeur] 
+	\item[Inconvénient majeur] 
+	\item[Possessions] 
+	\item[Entraînement au combat] 
+}{
+	\paragraph{Histoire personnelle}
+	
+	% TODO
+	
+	% TODO: y a des voyants qui clignotent, et tu ne penses pas que c'est au mana...
+	
+	% TODO: technologiste sont des gens dangereux, mieux vaut pas te déclarer comme magicienne
+	
+	% TODO: peut avoir des prophéties subites (rare)
+	% TODO: capable de détecter (et résister) l'utilisation de pouvoir psy de \nmPlayerIX
+	
+	% TODO: ne croit pas aux paradoxes (en tout cas, dans son univers. Aucune idée dans celui-ci)
+	
+	% Sorts:
+	
+	% TODO: capacité magique: sent la magie/truc surnaturel qui se passe
+	\paragraph{Sorts:} Tu as une limite de 3 lancements de sorts durant la partie. Pour lancer un sort, tu dois prononcer à voix clair (càd, sans chuchoter, mais pas forcément tout fort) une suite de syllabes associé au sort, tout en pointant du doigt ta cible. Les sorts qui te sont disponibles sont:
+	\begin{itemize}
+		\item Sommeil () : Assomme un personnage pendant 3 minutes.
+		\item % TODO
+		
+		% TODO: sorts pas de combat?
+		
+		\item Shoggy (\emph{Fn'agth Radngan Traelfcre Scrortrac}): Invoque un bébé shoggoth plein de tentacules et trôôôôôp mignon. Tu l'as rencontré suite à une expérience (raté) de portail dimensionnel, et depuis il ne veut plus te lâcher. Shoggy est très affectueux et protège quiconque peut potentiellement menacer sa maman (avec forcément une force létale).
+	\end{itemize}
+	
+	
+	
+	% TODO: condition de victoire: sort de retour
+	
+}
+
+
+%7) Inspecteur
+\pageForPlayer{7}{\nmPlayerVII}{
+	\item[Nom] \nmPlayerVII
+	\item[Stéréotype] Inspecteur
+	
+	\item[Objectif] 
+	\item[Atout majeur] 
+	\item[Inconvénient majeur] 
+	\item[Possessions] 
+	\item[Entraînement au combat] 
+}{
+	\paragraph{Histoire personnelle}
+	
+	% TODO
+	
+	% TODO: il est avertit à chaque fois qu'il y a une anomalie temporelle (marche via SMS?)
+	
+	% TODO: a une salle holographique à sa disposition (voir ce qu'on peut/ne peut pas simuler)
+	% Possède un taser (assome, décharge faible)
+}
+
+
+
+
+%8) Agent de sécurité
+\pageForPlayer{8}{\nmPlayerVIII}{
+	\item[Nom] \nmPlayerVIII
+	\item[Stéréotype] Agent de sécurité - dealer d'épice
+	
+	\item[Objectif] 
+	\item[Atout majeur] 
+	\item[Inconvénient majeur] 
+	\item[Possessions] 
+	\item[Entraînement au combat] 
+}{
+	\paragraph{Histoire personnelle}
+	
+	% TODO
+	% Possède un phaseur
+	
+	% TODO: but => récupérer la cargaison d'épice (si possible sans régler) / ne pas se faire chopper / de manière générale, s'enrichir
+	
+}
+
+
+%9) Psychique
+\pageForPlayer{9}{\nmPlayerIX}{
+	\item[Nom] \nmPlayerIX
+	\item[Stéréotype] Prophète psychique
+	\item[Objectif] 
+	\item[Atout majeur] 
+	\item[Inconvénient majeur] 
+	\item[Possessions] 
+	\item[Entraînement au combat] 
+}{
+	\paragraph{Histoire personnelle}
+	
+	% TODO
+	
+	% TODO: couverture: voyageuse, veut rentrer voir sa famille à [station agricole paumée]
+	
+	% TODO: origine de l'épice (du fait de l'analyse de sa biologie)/ actuellement pourchassée par l'empire
+	% TODO: a des visions assez régulièrement, est toujours HS pendant les visions (du fait de la transmission d'info), mais n'a pas besoin de flux de tachyon et peut contrôler le moment du déclanchement
+	% TODO: possibilité de stocker jusqu'à une dose d'épice dans son corps pour soit déclancher une vision, soit transmettre une vision (qu'elle créé) à un joueur (qui aura les symptomes normales de l'épice, mais sans flux de tachyon)
+	
+	% ( TODO: possibilité de démaudir quelqu'un en claquant une charge)
+	
+	% TODO: ne croit pas aux paradoxes (les a déjà violé maintes fois)
+	
+}
+
+
+
+%10) Highlander de l'espace
+\pageForPlayer{10}{\nmPlayerX}{
+	\item[Nom] \nmPlayerX
+	\item[Stéréotype] Highlander de l'espace
+	
+	\item[Objectif] 
+	\item[Atout majeur] 
+	\item[Inconvénient majeur] 
+	\item[Possessions] 
+	\item[Entraînement au combat] 
+}{
+	\paragraph{Histoire personnelle}
+	
+	% TODO
+	
+	% TODO: mercenaire voyageant
+	
+	% TODO: But: ascender à la divinité
+	% Possède des dagues planquées sur lui (reste des armes qu'on ne lui a pas pris)
+	% Est un peu furax qu'on lui a piqué son phaseur
+}
+
+
+%11) Catalyste
+\pageForPlayer{11}{\nmPlayerXI}{
+	\item[Nom] \nmPlayerXI
+	\item[Stéréotype] Catalyse
+	
+	\item[Objectif] Éviter les problèmes (mais ce ne serait pas réaliste) - Survivre (ce qui est déjà plus réaliste) - Arriver à réduire/enlever ta malédiction
+	\item[Atout majeur] Des choses vont t'arriver\dots
+	\item[Inconvénient majeur] Des choses vont t'arriver\dots
+	\item[Possessions] Un besoin insatisfait d'avoir des vacances tranquilles
+	\item[Entraînement au combat] Moyen (à force de t'échapper de situation potentiellement apocalyptique, tu as réussi à apprendre deux ou trois trucs)
+}{
+	\paragraph{Histoire personnelle}
+	
+	
+	% TODO
+	
+	% TODO: "May your life be interesting"
+	
+	% TODO: buts: survivre / enlever sa malédiction (note: faisable par 6 (moyennant un sort) ou 9 (moyennant une charge) )
+	
+	
+}
+
+
+%12) Chimiste - loyal à l'empire
+\pageForPlayer{12}{\nmPlayerXII}{
+	\item[Nom] \nmPlayerXII
+	\item[Stéréotype] Chimiste expérimental - Loyaliste à l'empire
+	
+	\item[Objectif] 
+	\item[Atout majeur] 
+	\item[Inconvénient majeur] 
+	\item[Possessions] 
+	\item[Entraînement au combat] 
+}{
+	\paragraph{Histoire personnelle}
+	
+	% TODO
+	
+	% TODO: sait que paradoxes est intox de l'empire
+	
+	% TODO: loyal à l'empire, dans l'équipe de l'inspecteur
+	% TODO: priorité (dans l'ordre): faire tenir l'intox sur les paradoxes / aider l'inspecteur / conclure ses recherches
+	% TODO: priorité 1 => peut justifier un meurtre du point de vue de l'administration de l'empire (peut magouiller), même si non préférable. Sensé prendre le relai sur inspecteur si problème de ce genre et se rendent compte que paradoxe est intox
+	
+	\paragraph{Recherches} 
+	\begin{itemize}
+		\item Immunisation contre l'épice
+		
+		\item Etude génomique d'anomalie
+		
+		\item Omniscience localisée
+	\end{itemize}
+	% TODO: besoin de sujets de test pour pouvoir débloquer ces recherches
+	
+	
+	% TODO: possède également une drogue d'effacement locale de mémoire (sur 2 jours, prend 1h à se mettre en place, efface les 2 derniers jours)
+	
+	% TODO: matos => possibilité d'utiliser l'épice pour booster le combat
+}
+
+
+\end{document}
+
