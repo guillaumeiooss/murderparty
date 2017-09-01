@@ -7,5 +7,6 @@ Le template latex a été créé par Martin Bodin pour écrire ses propres murde
 
 Liste des murders dans ce dépot:
  - La confrérie des rêves (dossier "Contes_de_grimm"): murder à 12 joueurs, accent sur la diplomatie et l'intrigue. Univers des contes de Grimm "étendu".
+ - Du singulier au pluriel (dossier "Singulier_au_pluriel"): murder à 12 joueurs, accent sur des prises de tête scénaristique. Univers SF canonique (28/08/17: en cours d'écriture)
 
 
